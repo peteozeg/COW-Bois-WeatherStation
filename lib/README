@@ -1,0 +1,110 @@
+
+COW-Bois Weather Station - Library Directory
+=============================================
+
+This directory is for project-specific (private) libraries.
+PlatformIO will compile them into static libraries and link into the executable.
+
+Directory Structure
+-------------------
+Place each library in its own subdirectory:
+
+lib/
+├── CustomLibrary/
+│   ├── CustomLibrary.h
+│   └── CustomLibrary.cpp
+└── AnotherLib/
+    ├── AnotherLib.h
+    └── AnotherLib.cpp
+
+External Libraries (Auto-installed)
+-----------------------------------
+The following libraries are automatically installed via platformio.ini:
+
+SENSOR LIBRARIES:
+  - Adafruit Unified Sensor (v1.1.14)
+    Base library for all Adafruit sensors
+
+  - Adafruit BME280 Library (v2.2.4)
+    Temperature, humidity, and pressure sensor
+    I2C Address: 0x76 (or 0x77)
+
+  - Adafruit TSL2591 Library (v1.4.5)
+    High-sensitivity light sensor
+    I2C Address: 0x29
+
+  - Adafruit SGP30 Sensor (v2.0.3)
+    Air quality sensor (eCO2, TVOC)
+    I2C Address: 0x58
+
+  - HX711 by bogde (v0.7.5)
+    24-bit ADC for load cells (precipitation sensor)
+
+COMMUNICATION LIBRARIES:
+  - PubSubClient (v2.8)
+    MQTT client library
+    Used for data transmission to broker
+
+  - ArduinoJson (v7.0.0)
+    JSON serialization/deserialization
+    Used for formatting sensor data
+
+Hardware Connections Summary
+----------------------------
+
+I2C Sensors (Daisy-chainable via STEMMA QT/Qwiic):
+  ┌─────────┐    ┌─────────┐    ┌─────────┐
+  │ BME280  │───>│ TSL2591 │───>│  SGP30  │
+  │ (0x76)  │    │ (0x29)  │    │ (0x58)  │
+  └─────────┘    └─────────┘    └─────────┘
+       │
+  ESP32 GPIO 21 (SDA), GPIO 22 (SCL)
+
+ADC Sensors:
+  Wind Speed Flex Sensor ──> GPIO 34
+  Wind Direction Sensor  ──> GPIO 35
+  Battery Voltage        ──> GPIO 33
+
+HX711 Load Cell:
+  DOUT ──> GPIO 16
+  SCK  ──> GPIO 17
+
+Cellular Modem (SIM7600):
+  TX    ──> GPIO 27
+  RX    ──> GPIO 26
+  Power ──> GPIO 23
+  Reset ──> GPIO 5
+
+Adding Custom Libraries
+-----------------------
+
+1. Create a directory under lib/ with your library name
+2. Add .h and .cpp files
+3. Include in your code: #include <LibraryName.h>
+
+Example custom sensor wrapper:
+
+lib/
+└── MySensor/
+    ├── MySensor.h
+    └── MySensor.cpp
+
+// MySensor.h
+#ifndef MY_SENSOR_H
+#define MY_SENSOR_H
+class MySensor {
+public:
+    bool begin();
+    float read();
+};
+#endif
+
+// In your code:
+#include <MySensor.h>
+MySensor sensor;
+
+Useful Resources
+----------------
+- PlatformIO Library Manager: https://docs.platformio.org/en/latest/librarymanager/
+- ESP32 Arduino Core: https://docs.espressif.com/projects/arduino-esp32/
+- Adafruit Learning System: https://learn.adafruit.com/

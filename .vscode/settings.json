@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "*.h": "cpp",
+        "*.cpp": "cpp",
+        "*.ino": "cpp"
+    },
+    "C_Cpp.default.configurationProvider": "platformio.platformio-ide",
+    "editor.formatOnSave": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/.pio": false
+    }
+}

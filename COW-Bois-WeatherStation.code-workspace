@@ -1,0 +1,20 @@
+{
+    "folders": [
+        {
+            "name": "COW-Bois Weather Station",
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "*.h": "cpp",
+            "*.cpp": "cpp"
+        }
+    },
+    "extensions": {
+        "recommendations": [
+            "platformio.platformio-ide",
+            "ms-vscode.cpptools"
+        ]
+    }
+}

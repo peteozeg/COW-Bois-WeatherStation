@@ -1,0 +1,117 @@
+# COW-Bois Weather Station - Software TODO
+
+## Before First Upload
+
+- [ ] Copy `secrets.h.template` to `secrets.h`
+- [ ] Fill in MQTT broker credentials
+- [ ] Fill in cellular APN settings
+- [ ] Set main station MAC address (for microstations)
+- [ ] Verify pin definitions match your hardware
+
+## Testing Checklist
+
+### Sensor Testing
+- [ ] BME280 detected on I2C bus
+- [ ] BME280 temperature reading reasonable (15-30°C indoors)
+- [ ] BME280 humidity reading reasonable (30-70% indoors)
+- [ ] BME280 pressure reading reasonable (950-1050 hPa)
+- [ ] TSL2591 detected on I2C bus
+- [ ] TSL2591 lux reading changes with light level
+- [ ] SGP30 detected on I2C bus
+- [ ] SGP30 CO2 baseline stabilizes after 15 seconds
+- [ ] Wind speed ADC reading changes when flex sensor bent
+- [ ] Wind direction ADC reading changes when vane rotated
+- [ ] HX711 load cell tares successfully
+- [ ] HX711 weight reading changes with load
+
+### Communication Testing
+- [ ] Main station detects as MAIN_STATION mode
+- [ ] Microstation detects as MICROSTATION mode
+- [ ] ESP-NOW initializes successfully
+- [ ] ESP-NOW packets received by main station
+- [ ] Cellular modem responds to AT commands
+- [ ] Cellular modem connects to network
+- [ ] MQTT connection established
+- [ ] MQTT data published successfully
+
+### Power Testing
+- [ ] Battery voltage ADC reading accurate
+- [ ] Battery percentage calculation correct
+- [ ] Low battery warning triggers
+- [ ] Deep sleep enters/exits correctly
+
+## Calibration Tasks
+
+- [ ] Calibrate wind speed sensor with reference anemometer
+- [ ] Calibrate wind direction sensor to true North
+- [ ] Calibrate precipitation sensor with known weight
+- [ ] Verify temperature accuracy against reference thermometer
+- [ ] Store SGP30 baseline values after 12+ hour run
+
+## Future Enhancements
+
+### High Priority
+- [ ] Add OTA (Over-The-Air) firmware updates
+- [ ] Add SD card logging for data backup
+- [ ] Implement watchdog timer for crash recovery
+- [ ] Add SGP30 baseline persistence (SPIFFS/EEPROM)
+- [ ] Add retry logic for failed cellular transmissions
+- [ ] Buffer data locally when cellular unavailable
+
+### Medium Priority
+- [ ] Add web interface for configuration
+- [ ] Add BLE for local configuration via phone
+- [ ] Implement adaptive sampling rate based on conditions
+- [ ] Add rainfall intensity calculation
+- [ ] Add heat index calculation
+- [ ] Add dew point calculation
+
+### Low Priority
+- [ ] Add sunrise/sunset detection for solar tracking
+- [ ] Implement GPS for automatic location
+- [ ] Add lightning detection sensor support
+- [ ] Add soil moisture sensor support
+- [ ] Add UV index sensor support
+
+## Known Issues
+
+1. **SGP30 warmup**: Requires 15 seconds after power-on for accurate readings
+   - Current workaround: `isWarmedUp()` check before trusting readings
+
+2. **Wind direction circular averaging**: Must handle 0°/360° boundary
+   - Status: Implemented using sin/cos vector averaging
+
+3. **ESP-NOW channel**: Must match between all devices
+   - Status: Using channel 1 by default
+
+## Code Quality Tasks
+
+- [ ] Add unit tests for data aggregator
+- [ ] Add unit tests for data formatter
+- [ ] Add integration tests for sensor manager
+- [ ] Add static analysis (cppcheck)
+- [ ] Review and document all magic numbers
+- [ ] Add error codes/enums for better debugging
+
+## Documentation Tasks
+
+- [x] Create README.md with project overview
+- [x] Create SETUP.md with quick start guide
+- [x] Create HARDWARE.md with wiring diagrams
+- [x] Create TODO.md (this file)
+- [ ] Add inline code documentation
+- [ ] Create API reference for each module
+- [ ] Document MQTT payload schema
+- [ ] Create troubleshooting guide
+
+## Deployment Checklist
+
+- [ ] All sensors calibrated
+- [ ] Main station MAC address set in microstations
+- [ ] MQTT broker accessible from cellular network
+- [ ] Data visualization set up (Grafana/InfluxDB)
+- [ ] Enclosure weatherproofed
+- [ ] Solar panel positioned correctly
+- [ ] Battery fully charged
+- [ ] Mounting hardware secured
+- [ ] Test transmission from deployment location

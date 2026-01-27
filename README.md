@@ -1,0 +1,283 @@
+# COW-Bois Remote Weather Station
+
+**Kansas State University - ECE 591 Senior Design Project**
+
+A low-cost, solar-powered remote weather station designed to meet AASC Mesonet standards at a fraction of the cost of commercial solutions.
+
+## Team Members
+- Gantzen Miller (Hardware/Mechanical)
+- Kennedy Jones (Hardware/Mechanical)
+- Pete Ozegovic (Software)
+- Ben Rogers (Software/Mechanical)
+- Christian Evans (Power System/Hardware)
+- Abdullah Ali (Power System)
+
+## Project Overview
+
+This weather station system consists of:
+- **Main Station**: Full-featured station with cellular (4G LTE) connectivity via SIM7600 modem
+- **Microstations**: Satellite stations that communicate with the main station via ESP-NOW
+
+Both station types use the ESP32-WROOM-32U microcontroller and share the same sensor suite.
+
+## Hardware Requirements
+
+### Microcontroller
+- ESP32-WROOM-32U (with external antenna connector)
+
+### Sensors
+| Sensor | Measurement | Interface | I2C Address |
+|--------|-------------|-----------|-------------|
+| BME280 | Temperature, Humidity, Pressure | I2C | 0x76 |
+| TSL2591 | Light/Solar Radiation | I2C | 0x29 |
+| SGP30 | CO2, TVOC (Air Quality) | I2C | 0x58 |
+| Flex Sensors | Wind Speed & Direction | ADC | - |
+| HX711 + Load Cell | Precipitation | GPIO | - |
+
+### Communication
+- **Main Station**: LILYGO T-SIM7600G-H (4G LTE modem)
+- **Microstations**: ESP-NOW (built into ESP32)
+
+### Power
+- Solar panel + LiPo battery
+- Battery monitoring via ADC
+
+## Pin Configuration
+
+### I2C Bus (STEMMA QT)
+| Pin | GPIO |
+|-----|------|
+| SDA | 21 |
+| SCL | 22 |
+
+### ADC Sensors
+| Sensor | GPIO |
+|--------|------|
+| Wind Speed | 34 |
+| Wind Direction | 35 |
+| Battery Voltage | 33 |
+
+### HX711 Load Cell
+| Pin | GPIO |
+|-----|------|
+| DOUT | 16 |
+| SCK | 17 |
+
+### Cellular Modem (SIM7600)
+| Pin | GPIO |
+|-----|------|
+| TX | 27 |
+| RX | 26 |
+| Power | 23 |
+| Reset | 5 |
+| PWR Key | 4 |
+
+### Station Mode
+| Pin | GPIO | State |
+|-----|------|-------|
+| Mode Select | 25 | LOW = Main Station, HIGH = Microstation |
+
+## Software Architecture
+
+```
+src/
+├── main.cpp                 # Main firmware entry point
+├── sensors/
+│   ├── sensor_manager.cpp   # Unified sensor interface
+│   ├── bme280_sensor.cpp    # Temperature/humidity/pressure
+│   ├── tsl2591_sensor.cpp   # Light/solar radiation
+│   ├── sgp30_sensor.cpp     # Air quality
+│   ├── wind_sensor.cpp      # Flex sensor anemometer
+│   └── precipitation.cpp    # HX711 load cell
+├── communication/
+│   ├── mqtt_handler.cpp     # MQTT client
+│   ├── espnow_handler.cpp   # ESP-NOW protocol
+│   └── cellular_modem.cpp   # SIM7600 interface
+├── data/
+│   ├── data_aggregator.cpp  # Sample averaging
+│   └── data_formatter.cpp   # JSON/CSV formatting
+└── system/
+    ├── power_manager.cpp    # Battery monitoring
+    └── station_mode.cpp     # Main/micro station config
+
+include/
+├── config.h                 # Central configuration
+├── pin_definitions.h        # Hardware pin mapping
+├── secrets.h.template       # Credentials template
+├── sensors/                 # Sensor header files
+├── communication/           # Communication headers
+├── data/
+│   ├── weather_data.h       # Data structures
+│   ├── data_aggregator.h
+│   └── data_formatter.h
+└── system/                  # System headers
+```
+
+## Setup Instructions
+
+### 1. Install PlatformIO
+
+Install VS Code and the PlatformIO IDE extension.
+
+### 2. Clone/Open Project
+
+Open the `COW-Bois-WeatherStation` folder in VS Code.
+
+### 3. Configure Credentials
+
+```bash
+cp include/secrets.h.template include/secrets.h
+```
+
+Edit `include/secrets.h` with your credentials:
+```cpp
+#define WIFI_SSID "your_ssid"
+#define WIFI_PASSWORD "your_password"
+#define MQTT_BROKER "broker.example.com"
+#define MQTT_USERNAME "your_username"
+#define MQTT_PASSWORD "your_password"
+#define CELLULAR_APN "your_apn"
+```
+
+### 4. Set Main Station MAC Address
+
+For microstations, edit `src/main.cpp` line 61:
+```cpp
+uint8_t mainStationMAC[] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF};
+```
+
+Replace with your main station's actual MAC address.
+
+### 5. Build and Upload
+
+```bash
+# Build
+pio run
+
+# Upload to ESP32
+pio run -t upload
+
+# Monitor serial output
+pio device monitor
+```
+
+## Configuration
+
+Edit `include/config.h` to adjust:
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `SAMPLE_INTERVAL_MS` | 3000 | Sensor sampling interval (3 sec) |
+| `TRANSMIT_INTERVAL_MS` | 300000 | Data transmission interval (5 min) |
+| `ESPNOW_TRANSMIT_INTERVAL_MS` | 30000 | Microstation transmit interval (30 sec) |
+| `DEBUG_ENABLED` | true | Enable serial debug output |
+
+## Data Flow
+
+### Main Station
+1. Sample sensors every 3 seconds
+2. Aggregate data over 5-minute window (min/max/avg)
+3. Receive data from microstations via ESP-NOW
+4. Transmit all data to MQTT broker via cellular
+
+### Microstation
+1. Sample sensors every 3 seconds
+2. Aggregate data over 30-second window
+3. Transmit to main station via ESP-NOW
+
+## MQTT Topics
+
+| Topic | Description |
+|-------|-------------|
+| `cowbois/weather/<station_id>/weather` | Weather data (JSON) |
+| `cowbois/weather/<station_id>/status` | Station status |
+
+### Sample JSON Payload
+```json
+{
+  "station_id": "WX12345678",
+  "timestamp": 1706300000,
+  "data": {
+    "temperature": {"value": 22.5, "min": 21.0, "max": 24.0, "unit": "C"},
+    "humidity": {"value": 65.0, "min": 60.0, "max": 70.0, "unit": "%"},
+    "pressure": {"value": 1013.25, "unit": "hPa"},
+    "wind_speed": {"value": 3.5, "max": 8.2, "unit": "m/s"},
+    "wind_direction": {"value": 225, "unit": "deg"},
+    "precipitation": {"value": 0.0, "unit": "mm"},
+    "solar_radiation": {"value": 450.0, "unit": "W/m2"},
+    "co2": {"value": 420, "unit": "ppm"},
+    "tvoc": {"value": 15, "unit": "ppb"}
+  }
+}
+```
+
+## Sensor Calibration
+
+### Wind Speed Sensor
+1. Set up reference anemometer
+2. Call `windSensor.calibrateSpeed(referenceMps, adcReading)`
+3. Update `_speedCalibrationFactor` if needed
+
+### Wind Direction Sensor
+1. Point vane to true North
+2. Note ADC reading
+3. Call `windSensor.calibrateDirection(trueNorthRawReading)`
+
+### Precipitation Sensor (Load Cell)
+1. Ensure collection vessel is empty
+2. Call `precipSensor.tare()`
+3. Place known weight (e.g., 100g)
+4. Call `precipSensor.calibrate(100.0)`
+
+### SGP30 Air Quality
+The SGP30 requires 15 seconds warmup after power-on. For best accuracy:
+1. Run continuously for 12+ hours to establish baseline
+2. Save baseline values: `sgp30.getBaseline(co2Base, tvocBase)`
+3. Restore on startup: `sgp30.setBaseline(co2Base, tvocBase)`
+
+## Troubleshooting
+
+### Sensor Not Detected
+- Check I2C wiring (SDA/SCL)
+- Verify I2C address with `Wire.beginTransmission()` scan
+- Ensure STEMMA QT cables are fully seated
+
+### No Cellular Connection
+- Verify SIM card is inserted correctly
+- Check antenna connection
+- Confirm APN settings are correct
+- Monitor AT command responses in debug output
+
+### ESP-NOW Not Working
+- Ensure both devices are on same WiFi channel
+- Verify MAC addresses are correct
+- Check that WiFi is in STA mode
+
+### Erratic ADC Readings
+- Add capacitor (100nF) near ADC input
+- Use averaging in software
+- Check for loose connections
+
+## Sensor Specifications
+
+| Measurement | Range | Accuracy | Resolution |
+|-------------|-------|----------|------------|
+| Temperature | -40 to +85°C | ±0.3°C | 0.01°C |
+| Humidity | 0-100% RH | ±2% | 0.008% |
+| Pressure | 300-1100 hPa | ±1 hPa | 0.18 Pa |
+| Wind Speed | 0-50 m/s | ±0.3 m/s | 0.1 m/s |
+| Wind Direction | 0-360° | ±3° | 1° |
+| Precipitation | 0-500 mm | ±5% | 0.254 mm |
+| Solar Radiation | 0-1500 W/m² | ±5% | 0.2 W/m² |
+| CO2 | 400-60000 ppm | ±15% | 1 ppm |
+| TVOC | 0-60000 ppb | ±15% | 1 ppb |
+
+## License
+
+This project was developed for Kansas State University ECE 591 Senior Design.
+
+## References
+
+- [AASC Mesonet Standards](business%20documentation/AASC%20Recommendations%20and%20Best%20Practices%20for%20Mesonets%20-%20Final,%20Ver%201.pdf)
+- [ESP32 Datasheet](business%20documentation/esp32-wroom-32d_esp32-wroom-32u_datasheet_en.pdf)
+- [KSU Mesonet Technical Overview](business%20documentation/KSU%20Mesonet%20Technical%20Overview%20(Standards).pdf)
