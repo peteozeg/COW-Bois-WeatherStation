@@ -298,6 +298,8 @@ bool CellularModem::sendSMS(const char* phoneNumber, const char* message) {
 }
 
 bool CellularModem::sendATCommand(const char* cmd, const char* expectedResponse, uint32_t timeout) {
+    if (!_modemSerial) return false;
+
     // Clear any pending data
     while (_modemSerial->available()) {
         _modemSerial->read();
@@ -312,6 +314,8 @@ bool CellularModem::sendATCommand(const char* cmd, const char* expectedResponse,
 }
 
 bool CellularModem::waitForResponse(const char* expected, uint32_t timeout) {
+    if (!_modemSerial) return false;
+
     unsigned long start = millis();
     int bufferIndex = 0;
     memset(_responseBuffer, 0, sizeof(_responseBuffer));
@@ -405,11 +409,13 @@ void CellularModem::parseIMEI() {
 }
 
 void CellularModem::sleep() {
+    if (!_initialized) return;
     DEBUG_PRINTLN("Modem: Entering sleep mode");
     sendATCommand("AT+CSCLK=2", "OK", 1000);
 }
 
 void CellularModem::wake() {
+    if (!_initialized || !_modemSerial) return;
     DEBUG_PRINTLN("Modem: Waking up");
     // Send any character to wake up
     _modemSerial->println("AT");

@@ -1,5 +1,9 @@
 # COW-Bois Weather Station - Quick Setup Guide
 
+> **Build Status**: ✅ Firmware compiles successfully (v1.0.0)
+>
+> **Resource Usage**: RAM 14.5% | Flash 62.4%
+
 ## Prerequisites
 
 - VS Code with PlatformIO IDE extension

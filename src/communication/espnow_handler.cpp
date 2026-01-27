@@ -194,9 +194,9 @@ void ESPNowHandler::onSendStatic(const uint8_t* macAddress, esp_now_send_status_
     }
 }
 
-void ESPNowHandler::onReceiveStatic(const esp_now_recv_info_t* info, const uint8_t* data, int length) {
+void ESPNowHandler::onReceiveStatic(const uint8_t* macAddress, const uint8_t* data, int length) {
     if (_instance) {
-        _instance->onReceive(info->src_addr, data, length);
+        _instance->onReceive(macAddress, data, length);
     }
 }
 

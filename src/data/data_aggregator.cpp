@@ -5,6 +5,7 @@
 #include "data/data_aggregator.h"
 #include "config.h"
 #include <math.h>
+#include <float.h>
 
 DataAggregator::DataAggregator()
     : _sampleCount(0)
@@ -18,15 +19,15 @@ void DataAggregator::reset() {
 
     // Reset accumulated values
     _tempSum = 0;
-    _tempMin = 999;
-    _tempMax = -999;
+    _tempMin = FLT_MAX;
+    _tempMax = -FLT_MAX;
 
     _humiditySum = 0;
-    _humidityMin = 999;
+    _humidityMin = FLT_MAX;
     _humidityMax = 0;
 
     _pressureSum = 0;
-    _pressureMin = 9999;
+    _pressureMin = FLT_MAX;
     _pressureMax = 0;
 
     _windSpeedSum = 0;

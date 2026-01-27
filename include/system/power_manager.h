@@ -46,7 +46,7 @@ public:
      * Check if battery is charging
      * @return true if charging detected
      */
-    bool isCharging();
+    bool isCharging() const;
 
     /**
      * Check if battery is low

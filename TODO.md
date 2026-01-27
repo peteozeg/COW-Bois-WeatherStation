@@ -1,5 +1,15 @@
 # COW-Bois Weather Station - Software TODO
 
+**Firmware Version**: 1.0.0
+**Last Updated**: 2026-01-26
+
+## Build Status
+
+- [x] All source files compile successfully
+- [x] No compiler errors
+- [x] RAM usage: ~14.5% (47KB / 320KB)
+- [x] Flash usage: ~62.4% (817KB / 1.3MB)
+
 ## Before First Upload
 
 - [ ] Copy `secrets.h.template` to `secrets.h`
@@ -84,14 +94,25 @@
 3. **ESP-NOW channel**: Must match between all devices
    - Status: Using channel 1 by default
 
+4. **MQTT_MAX_PACKET_SIZE warning**: Compiler warning about redefinition
+   - Status: Harmless - our config.h value (1024) overrides library default (256)
+   - This is intentional to allow larger JSON payloads
+
+5. **ESPNowHandler singleton pattern**: Only one instance should be created
+   - Status: By design - ESP-NOW callbacks require static functions
+   - Creating multiple instances will cause callback routing issues
+
 ## Code Quality Tasks
 
 - [ ] Add unit tests for data aggregator
 - [ ] Add unit tests for data formatter
 - [ ] Add integration tests for sensor manager
 - [ ] Add static analysis (cppcheck)
-- [ ] Review and document all magic numbers
+- [x] Review and document all magic numbers (in config.h)
 - [ ] Add error codes/enums for better debugging
+- [x] Code review for header/implementation mismatches - COMPLETE
+- [x] Null pointer safety checks in CellularModem - COMPLETE
+- [x] Const correctness review - COMPLETE
 
 ## Documentation Tasks
 
@@ -101,8 +122,8 @@
 - [x] Create TODO.md (this file)
 - [ ] Add inline code documentation
 - [ ] Create API reference for each module
-- [ ] Document MQTT payload schema
-- [ ] Create troubleshooting guide
+- [x] Document MQTT payload schema (in README.md)
+- [x] Create troubleshooting guide (in README.md and SETUP.md)
 
 ## Deployment Checklist
 

@@ -126,7 +126,7 @@ private:
 
     // Static callbacks (required by ESP-NOW API)
     static void onSendStatic(const uint8_t* macAddress, esp_now_send_status_t status);
-    static void onReceiveStatic(const esp_now_recv_info_t* info, const uint8_t* data, int length);
+    static void onReceiveStatic(const uint8_t* macAddress, const uint8_t* data, int length);
 
     // Instance callback handlers
     void onSend(const uint8_t* macAddress, esp_now_send_status_t status);

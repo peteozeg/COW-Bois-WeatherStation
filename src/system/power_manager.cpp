@@ -86,7 +86,7 @@ uint8_t PowerManager::readBatteryPercent() {
     return percent;
 }
 
-bool PowerManager::isCharging() {
+bool PowerManager::isCharging() const {
     if (_chargingPin == 255) return false;
 
     // Most charging ICs pull the status pin LOW when charging

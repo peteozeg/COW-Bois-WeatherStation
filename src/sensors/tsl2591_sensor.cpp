@@ -33,9 +33,10 @@ bool TSL2591Sensor::begin() {
 bool TSL2591Sensor::isConnected() {
     if (!_initialized) return false;
 
-    // Try reading sensor ID to verify connection
-    uint8_t id = _tsl.getID();
-    return (id == 0x50);  // TSL2591 ID
+    // Try reading the sensor to verify connection
+    // If the sensor is disconnected, getFullLuminosity() returns 0xFFFFFFFF
+    uint32_t lum = _tsl.getFullLuminosity();
+    return (lum != 0xFFFFFFFF);
 }
 
 uint32_t TSL2591Sensor::readLux() {

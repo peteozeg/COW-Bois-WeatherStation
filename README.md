@@ -2,6 +2,13 @@
 
 **Kansas State University - ECE 591 Senior Design Project**
 
+| | |
+|---|---|
+| **Version** | 1.0.0 |
+| **Platform** | ESP32-WROOM-32U |
+| **Framework** | Arduino (PlatformIO) |
+| **Build Status** | ✅ Passing |
+
 A low-cost, solar-powered remote weather station designed to meet AASC Mesonet standards at a fraction of the cost of commercial solutions.
 
 ## Team Members
@@ -272,6 +279,26 @@ The SGP30 requires 15 seconds warmup after power-on. For best accuracy:
 | CO2 | 400-60000 ppm | ±15% | 1 ppm |
 | TVOC | 0-60000 ppb | ±15% | 1 ppb |
 
+## Memory Usage
+
+| Resource | Used | Available | Percentage |
+|----------|------|-----------|------------|
+| RAM | 47 KB | 320 KB | 14.5% |
+| Flash | 817 KB | 1.3 MB | 62.4% |
+
+## Dependencies
+
+All dependencies are managed via PlatformIO and automatically installed:
+
+| Library | Version | Purpose |
+|---------|---------|---------|
+| Adafruit BME280 | 2.3.0 | Temperature/humidity/pressure sensor |
+| Adafruit TSL2591 | 1.4.5 | Light sensor |
+| Adafruit SGP30 | 2.0.3 | Air quality sensor |
+| HX711 | 0.7.5 | Load cell ADC |
+| PubSubClient | 2.8.0 | MQTT client |
+| ArduinoJson | 7.4.2 | JSON serialization |
+
 ## License
 
 This project was developed for Kansas State University ECE 591 Senior Design.
@@ -281,3 +308,14 @@ This project was developed for Kansas State University ECE 591 Senior Design.
 - [AASC Mesonet Standards](business%20documentation/AASC%20Recommendations%20and%20Best%20Practices%20for%20Mesonets%20-%20Final,%20Ver%201.pdf)
 - [ESP32 Datasheet](business%20documentation/esp32-wroom-32d_esp32-wroom-32u_datasheet_en.pdf)
 - [KSU Mesonet Technical Overview](business%20documentation/KSU%20Mesonet%20Technical%20Overview%20(Standards).pdf)
+
+## Changelog
+
+### v1.0.0 (2026-01-26)
+- Initial release
+- Complete sensor suite: BME280, TSL2591, SGP30, wind sensors, precipitation
+- ESP-NOW communication for microstations
+- Cellular modem support for main station
+- MQTT data publishing
+- Power management with battery monitoring
+- Data aggregation with min/max/average calculations
