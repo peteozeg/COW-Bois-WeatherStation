@@ -1,0 +1,157 @@
+(kicad_pcb
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(general
+		(thickness 1.6)
+		(legacy_teardrops no)
+	)
+	(paper "A4")
+	(layers
+		(0 "F.Cu" signal)
+		(4 "In1.Cu" signal)
+		(6 "In2.Cu" signal)
+		(2 "B.Cu" signal)
+		(5 "F.SilkS" user "F.Silkscreen")
+		(7 "B.SilkS" user "B.Silkscreen")
+		(1 "F.Mask" user)
+		(3 "B.Mask" user)
+		(17 "Dwgs.User" user "User.Drawings")
+		(19 "Cmts.User" user "User.Comments")
+		(21 "Eco1.User" user "User.Eco1")
+		(25 "Edge.Cuts" user)
+		(27 "Margin" user)
+		(31 "F.CrtYd" user "F.Courtyard")
+		(29 "B.CrtYd" user "B.Courtyard")
+		(35 "F.Fab" user)
+		(33 "B.Fab" user)
+		(39 "User.1" user)
+	)
+	(setup
+		(stackup
+			(layer "F.SilkS"
+				(type "Top Silk Screen")
+			)
+			(layer "F.Mask"
+				(type "Top Solder Mask")
+				(color "Green")
+				(thickness 0.0069)
+			)
+			(layer "F.Cu"
+				(type "copper")
+				(thickness 0.035)
+			)
+			(layer "dielectric 1"
+				(type "prepreg")
+				(color "FR4 natural")
+				(thickness 0.2104)
+				(material "7628, RC 49%")
+				(epsilon_r 4.4)
+				(loss_tangent 0.02)
+			)
+			(layer "In1.Cu"
+				(type "copper")
+				(thickness 0.0152)
+			)
+			(layer "dielectric 2"
+				(type "core")
+				(color "FR4 natural")
+				(thickness 1.065)
+				(material "7628 Core")
+				(epsilon_r 4.43)
+				(loss_tangent 0.02)
+			)
+			(layer "In2.Cu"
+				(type "copper")
+				(thickness 0.0152)
+			)
+			(layer "dielectric 3"
+				(type "prepreg")
+				(color "FR4 natural")
+				(thickness 0.2104)
+				(material "7628, RC 49%")
+				(epsilon_r 4.4)
+				(loss_tangent 0.02)
+			)
+			(layer "B.Cu"
+				(type "copper")
+				(thickness 0.035)
+			)
+			(layer "B.Mask"
+				(type "Bottom Solder Mask")
+				(color "Green")
+				(thickness 0.0069)
+			)
+			(layer "B.SilkS"
+				(type "Bottom Silk Screen")
+			)
+			(copper_finish "None")
+			(dielectric_constraints no)
+		)
+		(pad_to_mask_clearance 0)
+		(allow_soldermask_bridges_in_footprints no)
+		(tenting front back)
+		(pcbplotparams
+			(layerselection 0x00000000_00000000_55555555_575555ff)
+			(plot_on_all_layers_selection 0x00000000_00000000_00000000_00000000)
+			(disableapertmacros no)
+			(usegerberextensions yes)
+			(usegerberattributes yes)
+			(usegerberadvancedattributes yes)
+			(creategerberjobfile no)
+			(dashed_line_dash_ratio 12.000000)
+			(dashed_line_gap_ratio 3.000000)
+			(svgprecision 4)
+			(plotframeref no)
+			(mode 1)
+			(useauxorigin no)
+			(hpglpennumber 1)
+			(hpglpenspeed 20)
+			(hpglpendiameter 15.000000)
+			(pdf_front_fp_property_popups yes)
+			(pdf_back_fp_property_popups yes)
+			(pdf_metadata yes)
+			(pdf_single_document no)
+			(dxfpolygonmode yes)
+			(dxfimperialunits yes)
+			(dxfusepcbnewfont yes)
+			(psnegative no)
+			(psa4output no)
+			(plot_black_and_white yes)
+			(plotinvisibletext no)
+			(sketchpadsonfab no)
+			(plotpadnumbers no)
+			(hidednponfab no)
+			(sketchdnponfab yes)
+			(crossoutdnponfab yes)
+			(subtractmaskfromsilk no)
+			(outputformat 1)
+			(mirror no)
+			(drillshape 0)
+			(scaleselection 1)
+			(outputdirectory "Gerbers/")
+		)
+	)
+	(net 0 "")
+	(embedded_fonts no)
+	(embedded_files
+		(file
+			(name "Template.kicad_wks")
+			(type worksheet)
+			(data |KLUv/WCICmUUANbbVyEQlxsmHCQ5WoBKBDFDpxb+BF0v8sLytO5R+y0iAHgBoAFOAEcAUQD4PZ7N
+				cva1XtZC2Xf8q+o0yPZ8Z0l+7VdVw2w/2fBL/gUAICAARe+hNChiFm3n2QfGzvi17Ne96ppzWlTS
+				vtiG2UcFQEAQgkhZp3EWVAhgnLG/5L99lValLauplLlrX3PQc/abMfdfy5YRxOFva//efrvnu7si
+				nLWO/ddDIczRpt1dv2bLqz9rH8bYHtLuc55D+B9vYCO/xI4oEpQKBHPBNpmD0YBENrXlVQ1WV0Pi
+				kMIyDEeGaTAYCIrQC3/N8TlnU/a/zrWpYz8UfSrtyTDR2tLatk3OKtq82U9rxHZOu7gzu9IOcQFB
+				pZgZCjbBIPawpBGK64CYlF4HSumEQclg2AOD4FAYlkmlkd2v9S4255yYJAPJPOcfnC3XFTvb7+7B
+				zEEHd2rgnmbpPrx1ZbWFmE0pZINdAnyg8URnFJKZEUmTFDpQhIiZKtsGe0MUWKCH2dWmcrVLOtpV
+				DoSyrLktmTSbyOSmrLPmEmRNyhf4IjW2uhJegBi9jr/h69BmMx2fNw6HGW3gTWf3Wpe7tGO+8jK7
+				Ls9rmYtlh+RYesZh56DOwvHOKqMCo9lwbwqiH4xZs/kY5JJxuyxgMxM3xXd1V/EaN1wCaYXGavXe
+				sFyex8tHzuIpzAqs0xDU0xpGG8gLRTyOb9QqiRkPZKM4G911hQbb+sOvQZoC6Fv1lsvzX3Qoz+ek
+				MdCMObDAFNjxyq4ALGa9g149MdqoDp9OQcCIqUlKA2Sywgt5WAjPdZEZEwFjU0go8wpIMPChU4wj
+				d7TsQGIbZPIzIIyf7cJepFejmqZpb/0bho+4gxy3IB2DUAU=|
+			)
+			(checksum "B68313E81002EE3990AF4674C7A190AA")
+		)
+	)
+)
