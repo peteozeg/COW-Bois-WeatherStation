@@ -9,8 +9,8 @@
 // ============================================
 // Firmware Version
 // ============================================
-#define FIRMWARE_VERSION "1.0.0"
-#define FIRMWARE_DATE "2026-01-26"
+#define FIRMWARE_VERSION "1.0.1"
+#define FIRMWARE_DATE "2026-01-28"
 
 // ============================================
 // Timing Configuration (per AASC standards)

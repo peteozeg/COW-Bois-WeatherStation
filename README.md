@@ -118,7 +118,49 @@ include/
 │   ├── data_aggregator.h
 │   └── data_formatter.h
 └── system/                  # System headers
+
+test/                        # Individual sensor test sketches
+├── test_i2c_scan/           # I2C bus scanner
+├── test_bme280/             # Temperature/humidity/pressure test
+├── test_tsl2591/            # Light sensor test
+├── test_sgp30/              # Air quality sensor test
+├── test_wind/               # Wind sensor ADC test
+└── test_hx711/              # Load cell test
 ```
+
+## Test Sketches
+
+Individual test sketches are provided to test each sensor in isolation before running the full firmware.
+
+### Available Tests
+
+| Test | Command | Purpose |
+|------|---------|---------|
+| I2C Scanner | `pio run -e test_i2c_scan -t upload` | Find all I2C devices on bus |
+| BME280 | `pio run -e test_bme280 -t upload` | Test temp, humidity, pressure |
+| TSL2591 | `pio run -e test_tsl2591 -t upload` | Test light sensor with gain control |
+| SGP30 | `pio run -e test_sgp30 -t upload` | Test CO2/TVOC with warmup monitor |
+| Wind | `pio run -e test_wind -t upload` | Test wind ADC sensors |
+| HX711 | `pio run -e test_hx711 -t upload` | Test load cell with calibration |
+
+### Usage
+
+```bash
+# Step 1: Scan I2C bus to verify sensor connections
+pio run -e test_i2c_scan -t upload && pio device monitor
+
+# Step 2: Test individual sensors
+pio run -e test_bme280 -t upload && pio device monitor
+```
+
+### Interactive Commands
+
+Each test sketch supports serial commands:
+- `r` - Read sensor once
+- `c` - Continuous reading mode
+- `s` - Stop continuous mode
+- `h` - Show help/available commands
+- Additional sensor-specific commands (calibration, tare, etc.)
 
 ## Setup Instructions
 
@@ -310,6 +352,15 @@ This project was developed for Kansas State University ECE 591 Senior Design.
 - [KSU Mesonet Technical Overview](business%20documentation/KSU%20Mesonet%20Technical%20Overview%20(Standards).pdf)
 
 ## Changelog
+
+### v1.0.1 (2026-01-28)
+- Added individual sensor test sketches for hardware validation
+- Added I2C bus scanner utility
+- Fixed ESP-NOW callback signature for ESP32 Arduino framework
+- Fixed TSL2591 isConnected() method
+- Added null pointer safety checks in CellularModem
+- Improved DataAggregator min/max initialization
+- Updated documentation with test procedures
 
 ### v1.0.0 (2026-01-26)
 - Initial release

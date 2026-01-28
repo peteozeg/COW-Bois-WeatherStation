@@ -1,7 +1,7 @@
 # COW-Bois Weather Station - Software TODO
 
-**Firmware Version**: 1.0.0
-**Last Updated**: 2026-01-26
+**Firmware Version**: 1.0.1
+**Last Updated**: 2026-01-28
 
 ## Build Status
 
@@ -9,6 +9,7 @@
 - [x] No compiler errors
 - [x] RAM usage: ~14.5% (47KB / 320KB)
 - [x] Flash usage: ~62.4% (817KB / 1.3MB)
+- [x] All test sketches compile successfully
 
 ## Before First Upload
 
@@ -18,20 +19,34 @@
 - [ ] Set main station MAC address (for microstations)
 - [ ] Verify pin definitions match your hardware
 
+## Test Sketches Available
+
+Individual test sketches for hardware validation:
+
+| Test | Command | Status |
+|------|---------|--------|
+| I2C Scanner | `pio run -e test_i2c_scan -t upload` | ✅ Ready |
+| BME280 | `pio run -e test_bme280 -t upload` | ✅ Ready |
+| TSL2591 | `pio run -e test_tsl2591 -t upload` | ✅ Ready |
+| SGP30 | `pio run -e test_sgp30 -t upload` | ✅ Ready |
+| Wind Sensors | `pio run -e test_wind -t upload` | ✅ Ready |
+| HX711 Load Cell | `pio run -e test_hx711 -t upload` | ✅ Ready |
+
 ## Testing Checklist
 
-### Sensor Testing
-- [ ] BME280 detected on I2C bus
+### Sensor Testing (use test sketches)
+- [ ] I2C scan finds devices at 0x76, 0x29, 0x58
+- [ ] BME280 detected on I2C bus (`test_bme280`)
 - [ ] BME280 temperature reading reasonable (15-30°C indoors)
 - [ ] BME280 humidity reading reasonable (30-70% indoors)
 - [ ] BME280 pressure reading reasonable (950-1050 hPa)
-- [ ] TSL2591 detected on I2C bus
+- [ ] TSL2591 detected on I2C bus (`test_tsl2591`)
 - [ ] TSL2591 lux reading changes with light level
-- [ ] SGP30 detected on I2C bus
+- [ ] SGP30 detected on I2C bus (`test_sgp30`)
 - [ ] SGP30 CO2 baseline stabilizes after 15 seconds
-- [ ] Wind speed ADC reading changes when flex sensor bent
+- [ ] Wind speed ADC reading changes when flex sensor bent (`test_wind`)
 - [ ] Wind direction ADC reading changes when vane rotated
-- [ ] HX711 load cell tares successfully
+- [ ] HX711 load cell tares successfully (`test_hx711`)
 - [ ] HX711 weight reading changes with load
 
 ### Communication Testing
@@ -106,7 +121,7 @@
 
 - [ ] Add unit tests for data aggregator
 - [ ] Add unit tests for data formatter
-- [ ] Add integration tests for sensor manager
+- [x] Add hardware test sketches for sensors - COMPLETE (6 test sketches)
 - [ ] Add static analysis (cppcheck)
 - [x] Review and document all magic numbers (in config.h)
 - [ ] Add error codes/enums for better debugging
