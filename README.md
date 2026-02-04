@@ -35,7 +35,7 @@ Both station types use the ESP32-WROOM-32U microcontroller and share the same se
 ### Sensors
 | Sensor | Measurement | Interface | I2C Address |
 |--------|-------------|-----------|-------------|
-| BME280 | Temperature, Humidity, Pressure | I2C | 0x76 |
+| BME680 | Temperature, Humidity, Pressure, Gas | I2C | 0x76 |
 | TSL2591 | Light/Solar Radiation | I2C | 0x29 |
 | SGP30 | CO2, TVOC (Air Quality) | I2C | 0x58 |
 | Flex Sensors | Wind Speed & Direction | ADC | - |
@@ -121,9 +121,12 @@ include/
 
 test/                        # Individual sensor test sketches
 ├── test_i2c_scan/           # I2C bus scanner
-├── test_bme280/             # Temperature/humidity/pressure test
+├── test_bme280/             # BME280 test (legacy)
+├── test_bme680_simple/      # BME680 basic test (Adafruit example)
 ├── test_tsl2591/            # Light sensor test
+├── test_tsl2591_simple/     # TSL2591 basic test (Adafruit example)
 ├── test_sgp30/              # Air quality sensor test
+├── test_sgp30_simple/       # SGP30 basic test (Adafruit example)
 ├── test_wind/               # Wind sensor ADC test
 └── test_hx711/              # Load cell test
 ```
@@ -137,9 +140,12 @@ Individual test sketches are provided to test each sensor in isolation before ru
 | Test | Command | Purpose |
 |------|---------|---------|
 | I2C Scanner | `pio run -e test_i2c_scan -t upload` | Find all I2C devices on bus |
-| BME280 | `pio run -e test_bme280 -t upload` | Test temp, humidity, pressure |
+| BME280 | `pio run -e test_bme280 -t upload` | Test temp, humidity, pressure (legacy) |
+| BME680 Simple | `pio run -e test_bme680_simple -t upload` | Basic BME680 test (Adafruit example) |
 | TSL2591 | `pio run -e test_tsl2591 -t upload` | Test light sensor with gain control |
+| TSL2591 Simple | `pio run -e test_tsl2591_simple -t upload` | Basic TSL2591 test (Adafruit example) |
 | SGP30 | `pio run -e test_sgp30 -t upload` | Test CO2/TVOC with warmup monitor |
+| SGP30 Simple | `pio run -e test_sgp30_simple -t upload` | Basic SGP30 test (Adafruit example) |
 | Wind | `pio run -e test_wind -t upload` | Test wind ADC sensors |
 | HX711 | `pio run -e test_hx711 -t upload` | Test load cell with calibration |
 
@@ -334,12 +340,13 @@ All dependencies are managed via PlatformIO and automatically installed:
 
 | Library | Version | Purpose |
 |---------|---------|---------|
-| Adafruit BME280 | 2.3.0 | Temperature/humidity/pressure sensor |
+| Adafruit BME280 | 2.2.4 | Temperature/humidity/pressure (legacy) |
+| Adafruit BME680 | 2.1.4 | Temperature/humidity/pressure/gas sensor |
 | Adafruit TSL2591 | 1.4.5 | Light sensor |
 | Adafruit SGP30 | 2.0.3 | Air quality sensor |
 | HX711 | 0.7.5 | Load cell ADC |
 | PubSubClient | 2.8.0 | MQTT client |
-| ArduinoJson | 7.4.2 | JSON serialization |
+| ArduinoJson | 7.0.0 | JSON serialization |
 
 ## License
 
@@ -352,6 +359,14 @@ This project was developed for Kansas State University ECE 591 Senior Design.
 - [KSU Mesonet Technical Overview](business%20documentation/KSU%20Mesonet%20Technical%20Overview%20(Standards).pdf)
 
 ## Changelog
+
+### v1.0.2 (2026-02-03)
+- Added simple sensor test sketches using official Adafruit example code
+  - test_bme680_simple: Basic BME680 temperature/humidity/pressure/gas test
+  - test_sgp30_simple: Basic SGP30 air quality test
+  - test_tsl2591_simple: Basic TSL2591 light sensor test
+- Switched from BME280 to BME680 sensor (adds gas/VOC sensing)
+- Retained BME280 test for potential hardware fallback
 
 ### v1.0.1 (2026-01-28)
 - Added individual sensor test sketches for hardware validation
