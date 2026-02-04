@@ -18,7 +18,7 @@
 // ============================================
 // I2C Addresses
 // ============================================
-#define BME280_I2C_ADDR 0x76      // or 0x77 if SDO is HIGH
+#define BME680_I2C_ADDR 0x76      // or 0x77 if SDO is HIGH
 #define TSL2591_I2C_ADDR 0x29
 #define SGP30_I2C_ADDR 0x58
 

@@ -79,11 +79,12 @@ void onESPNowReceive(const uint8_t* mac, const uint8_t* data, int len) {
             char payload[512];
             snprintf(payload, sizeof(payload),
                 "{\"station_id\":\"%s\",\"temperature\":%.2f,\"humidity\":%.2f,"
-                "\"pressure\":%.2f,\"wind_speed\":%.2f,\"wind_direction\":%u}",
+                "\"pressure\":%.2f,\"gas_resistance\":%.2f,\"wind_speed\":%.2f,\"wind_direction\":%u}",
                 packet.stationId,
                 packet.temperature / 100.0f,
                 packet.humidity / 100.0f,
                 packet.pressure / 10.0f,
+                packet.gasResistance / 10.0f,
                 packet.windSpeed / 100.0f,
                 packet.windDirection);
 
@@ -130,7 +131,7 @@ void setup() {
 
     // Print sensor status
     SensorStatus status = sensors.getStatus();
-    Serial.printf("  BME280: %s\n", status.bme280_ok ? "OK" : "FAILED");
+    Serial.printf("  BME680: %s\n", status.bme680_ok ? "OK" : "FAILED");
     Serial.printf("  TSL2591: %s\n", status.tsl2591_ok ? "OK" : "FAILED");
     Serial.printf("  SGP30: %s\n", status.sgp30_ok ? "OK" : "FAILED");
     Serial.printf("  Wind: %s\n", status.windSensor_ok ? "OK" : "FAILED");
@@ -237,6 +238,7 @@ void loop() {
                 lastReading.temperature = data.tempAvg;
                 lastReading.humidity = data.humidityAvg;
                 lastReading.pressure = data.pressureAvg;
+                lastReading.gasResistance = data.gasResistanceAvg;
                 lastReading.windSpeed = data.windSpeedAvg;
                 lastReading.windDirection = data.windDirAvg;
                 lastReading.precipitation = data.precipitation;

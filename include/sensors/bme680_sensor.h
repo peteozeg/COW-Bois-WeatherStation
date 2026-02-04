@@ -1,20 +1,20 @@
 /**
- * COW-Bois Weather Station - BME280 Sensor
- * Temperature, Humidity, and Pressure sensor driver
+ * COW-Bois Weather Station - BME680 Sensor
+ * Temperature, Humidity, Pressure, and Gas Resistance sensor driver
  */
 
-#ifndef BME280_SENSOR_H
-#define BME280_SENSOR_H
+#ifndef BME680_SENSOR_H
+#define BME680_SENSOR_H
 
 #include <Arduino.h>
-#include <Adafruit_BME280.h>
+#include <Adafruit_BME680.h>
 
-class BME280Sensor {
+class BME680Sensor {
 public:
-    BME280Sensor();
+    BME680Sensor();
 
     /**
-     * Initialize the BME280 sensor
+     * Initialize the BME680 sensor
      * @param addr I2C address (default 0x76)
      * @return true if initialization successful
      */
@@ -45,6 +45,12 @@ public:
     float readPressure();
 
     /**
+     * Read gas resistance (air quality indicator)
+     * @return Gas resistance in KOhms
+     */
+    float readGasResistance();
+
+    /**
      * Read all values at once (more efficient)
      * @param temp Reference to store temperature
      * @param humidity Reference to store humidity
@@ -52,6 +58,16 @@ public:
      * @return true if read successful
      */
     bool readAll(float& temp, float& humidity, float& pressure);
+
+    /**
+     * Read all values including gas resistance
+     * @param temp Reference to store temperature
+     * @param humidity Reference to store humidity
+     * @param pressure Reference to store pressure
+     * @param gasResistance Reference to store gas resistance
+     * @return true if read successful
+     */
+    bool readAllWithGas(float& temp, float& humidity, float& pressure, float& gasResistance);
 
     /**
      * Get sensor status
@@ -78,11 +94,24 @@ public:
     void setPressureOffset(float offset) { _pressureOffset = offset; }
 
 private:
-    Adafruit_BME280 _bme;
+    Adafruit_BME680 _bme;
     bool _initialized;
     float _tempOffset;
     float _humidityOffset;
     float _pressureOffset;
+
+    // Cached readings from last performReading()
+    float _lastTemp;
+    float _lastHumidity;
+    float _lastPressure;
+    float _lastGasResistance;
+    bool _readingValid;
+
+    /**
+     * Perform a reading and cache the results
+     * @return true if reading successful
+     */
+    bool performReading();
 };
 
-#endif // BME280_SENSOR_H
+#endif // BME680_SENSOR_H

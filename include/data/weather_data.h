@@ -14,10 +14,11 @@
 struct WeatherReading {
     uint32_t timestamp;           // millis() timestamp
 
-    // Temperature & Humidity (BME280)
+    // Temperature, Humidity, Pressure, Gas (BME680)
     float temperature;            // °C
     float humidity;               // % RH
     float pressure;               // hPa (mb)
+    float gasResistance;          // KOhms (air quality indicator)
 
     // Solar Radiation (TSL2591)
     uint32_t lux;                 // Raw lux value
@@ -40,7 +41,7 @@ struct WeatherReading {
     // Default constructor
     WeatherReading() :
         timestamp(0),
-        temperature(0), humidity(0), pressure(0),
+        temperature(0), humidity(0), pressure(0), gasResistance(0),
         lux(0), solarIrradiance(0),
         co2(0), tvoc(0),
         windSpeed(0), windDirection(0),
@@ -71,6 +72,11 @@ struct AggregatedData {
     float pressureMin;
     float pressureMax;
 
+    // Gas Resistance (BME680)
+    float gasResistanceAvg;
+    float gasResistanceMin;
+    float gasResistanceMax;
+
     // Wind
     float windSpeedAvg;
     float windSpeedMax;           // Gust
@@ -96,6 +102,7 @@ struct AggregatedData {
         tempAvg(0), tempMin(999), tempMax(-999),
         humidityAvg(0), humidityMin(999), humidityMax(0),
         pressureAvg(0), pressureMin(9999), pressureMax(0),
+        gasResistanceAvg(0), gasResistanceMin(9999), gasResistanceMax(0),
         windSpeedAvg(0), windSpeedMax(0), windDirAvg(0),
         precipitation(0),
         luxAvg(0), luxMax(0), solarAvg(0),
@@ -115,6 +122,7 @@ struct __attribute__((packed)) ESPNowPacket {
     int16_t temperature;          // °C * 100
     uint16_t humidity;            // % * 100
     uint16_t pressure;            // hPa * 10
+    uint16_t gasResistance;       // KOhms * 10
     uint16_t windSpeed;           // m/s * 100
     uint16_t windDirection;       // degrees
     uint16_t precipitation;       // mm * 100
@@ -131,14 +139,14 @@ struct __attribute__((packed)) ESPNowPacket {
 // Sensor Status
 // ============================================
 struct SensorStatus {
-    bool bme280_ok;
+    bool bme680_ok;
     bool tsl2591_ok;
     bool sgp30_ok;
     bool windSensor_ok;
     bool precipitation_ok;
 
     bool allOk() const {
-        return bme280_ok && tsl2591_ok && sgp30_ok &&
+        return bme680_ok && tsl2591_ok && sgp30_ok &&
                windSensor_ok && precipitation_ok;
     }
 };

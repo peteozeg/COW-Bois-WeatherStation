@@ -13,6 +13,7 @@ size_t DataFormatter::toJSON(const WeatherReading& reading, char* buffer, size_t
         "\"temperature\":%.2f,"
         "\"humidity\":%.2f,"
         "\"pressure\":%.2f,"
+        "\"gas_resistance\":%.2f,"
         "\"wind_speed\":%.2f,"
         "\"wind_direction\":%u,"
         "\"precipitation\":%.2f,"
@@ -26,6 +27,7 @@ size_t DataFormatter::toJSON(const WeatherReading& reading, char* buffer, size_t
         reading.temperature,
         reading.humidity,
         reading.pressure,
+        reading.gasResistance,
         reading.windSpeed,
         reading.windDirection,
         reading.precipitation,
@@ -46,6 +48,7 @@ size_t DataFormatter::toJSON(const AggregatedData& data, char* buffer, size_t bu
         "\"temperature\":{\"avg\":%.2f,\"min\":%.2f,\"max\":%.2f},"
         "\"humidity\":{\"avg\":%.2f,\"min\":%.2f,\"max\":%.2f},"
         "\"pressure\":{\"avg\":%.2f,\"min\":%.2f,\"max\":%.2f},"
+        "\"gas_resistance\":{\"avg\":%.2f,\"min\":%.2f,\"max\":%.2f},"
         "\"wind\":{\"speed_avg\":%.2f,\"speed_max\":%.2f,\"direction_avg\":%u},"
         "\"precipitation\":%.2f,"
         "\"light\":{\"lux_avg\":%lu,\"lux_max\":%lu,\"solar_avg\":%.2f},"
@@ -57,6 +60,7 @@ size_t DataFormatter::toJSON(const AggregatedData& data, char* buffer, size_t bu
         data.tempAvg, data.tempMin, data.tempMax,
         data.humidityAvg, data.humidityMin, data.humidityMax,
         data.pressureAvg, data.pressureMin, data.pressureMax,
+        data.gasResistanceAvg, data.gasResistanceMin, data.gasResistanceMax,
         data.windSpeedAvg, data.windSpeedMax, data.windDirAvg,
         data.precipitation,
         data.luxAvg, data.luxMax, data.solarAvg,
@@ -70,16 +74,17 @@ size_t DataFormatter::toCSV(const WeatherReading& reading, char* buffer, size_t 
 
     if (includeHeader) {
         offset += snprintf(buffer + offset, bufferSize - offset,
-            "timestamp,temperature,humidity,pressure,wind_speed,wind_direction,"
+            "timestamp,temperature,humidity,pressure,gas_resistance,wind_speed,wind_direction,"
             "precipitation,lux,solar_irradiance,co2,tvoc,valid\n");
     }
 
     offset += snprintf(buffer + offset, bufferSize - offset,
-        "%lu,%.2f,%.2f,%.2f,%.2f,%u,%.2f,%lu,%.2f,%u,%u,%d\n",
+        "%lu,%.2f,%.2f,%.2f,%.2f,%.2f,%u,%.2f,%lu,%.2f,%u,%u,%d\n",
         reading.timestamp,
         reading.temperature,
         reading.humidity,
         reading.pressure,
+        reading.gasResistance,
         reading.windSpeed,
         reading.windDirection,
         reading.precipitation,
@@ -103,6 +108,7 @@ size_t DataFormatter::toCSV(const AggregatedData& data, char* buffer, size_t buf
             "temp_avg,temp_min,temp_max,"
             "humidity_avg,humidity_min,humidity_max,"
             "pressure_avg,pressure_min,pressure_max,"
+            "gas_avg,gas_min,gas_max,"
             "wind_speed_avg,wind_speed_max,wind_dir_avg,"
             "precipitation,"
             "lux_avg,lux_max,solar_avg,"
@@ -111,6 +117,7 @@ size_t DataFormatter::toCSV(const AggregatedData& data, char* buffer, size_t buf
 
     offset += snprintf(buffer + offset, bufferSize - offset,
         "%lu,%lu,%u,"
+        "%.2f,%.2f,%.2f,"
         "%.2f,%.2f,%.2f,"
         "%.2f,%.2f,%.2f,"
         "%.2f,%.2f,%.2f,"
@@ -124,6 +131,7 @@ size_t DataFormatter::toCSV(const AggregatedData& data, char* buffer, size_t buf
         data.tempAvg, data.tempMin, data.tempMax,
         data.humidityAvg, data.humidityMin, data.humidityMax,
         data.pressureAvg, data.pressureMin, data.pressureMax,
+        data.gasResistanceAvg, data.gasResistanceMin, data.gasResistanceMax,
         data.windSpeedAvg, data.windSpeedMax, data.windDirAvg,
         data.precipitation,
         data.luxAvg, data.luxMax, data.solarAvg,
@@ -143,6 +151,7 @@ size_t DataFormatter::toMQTTPayload(const char* stationId, const AggregatedData&
         "\"temperature\":{\"value\":%.2f,\"min\":%.2f,\"max\":%.2f,\"unit\":\"C\"},"
         "\"humidity\":{\"value\":%.2f,\"min\":%.2f,\"max\":%.2f,\"unit\":\"%%\"},"
         "\"pressure\":{\"value\":%.2f,\"min\":%.2f,\"max\":%.2f,\"unit\":\"hPa\"},"
+        "\"gas_resistance\":{\"value\":%.2f,\"min\":%.2f,\"max\":%.2f,\"unit\":\"KOhms\"},"
         "\"wind_speed\":{\"value\":%.2f,\"max\":%.2f,\"unit\":\"m/s\"},"
         "\"wind_direction\":{\"value\":%u,\"unit\":\"deg\"},"
         "\"precipitation\":{\"value\":%.2f,\"unit\":\"mm\"},"
@@ -157,6 +166,7 @@ size_t DataFormatter::toMQTTPayload(const char* stationId, const AggregatedData&
         data.tempAvg, data.tempMin, data.tempMax,
         data.humidityAvg, data.humidityMin, data.humidityMax,
         data.pressureAvg, data.pressureMin, data.pressureMax,
+        data.gasResistanceAvg, data.gasResistanceMin, data.gasResistanceMax,
         data.windSpeedAvg, data.windSpeedMax,
         data.windDirAvg,
         data.precipitation,
@@ -179,6 +189,7 @@ size_t DataFormatter::toInfluxLineProtocol(const char* measurement, const char* 
         "temp_avg=%.2f,temp_min=%.2f,temp_max=%.2f,"
         "humidity_avg=%.2f,humidity_min=%.2f,humidity_max=%.2f,"
         "pressure_avg=%.2f,pressure_min=%.2f,pressure_max=%.2f,"
+        "gas_avg=%.2f,gas_min=%.2f,gas_max=%.2f,"
         "wind_speed_avg=%.2f,wind_speed_max=%.2f,wind_dir=%u,"
         "precipitation=%.2f,"
         "lux_avg=%lu,lux_max=%lu,solar_avg=%.2f,"
@@ -190,6 +201,7 @@ size_t DataFormatter::toInfluxLineProtocol(const char* measurement, const char* 
         data.tempAvg, data.tempMin, data.tempMax,
         data.humidityAvg, data.humidityMin, data.humidityMax,
         data.pressureAvg, data.pressureMin, data.pressureMax,
+        data.gasResistanceAvg, data.gasResistanceMin, data.gasResistanceMax,
         data.windSpeedAvg, data.windSpeedMax, data.windDirAvg,
         data.precipitation,
         data.luxAvg, data.luxMax, data.solarAvg,
@@ -205,6 +217,7 @@ void DataFormatter::printReading(const WeatherReading& reading) {
     Serial.printf("Temperature: %.2f °C\n", reading.temperature);
     Serial.printf("Humidity: %.2f %%\n", reading.humidity);
     Serial.printf("Pressure: %.2f hPa\n", reading.pressure);
+    Serial.printf("Gas Resistance: %.2f KOhms\n", reading.gasResistance);
     Serial.printf("Wind: %.2f m/s @ %u°\n", reading.windSpeed, reading.windDirection);
     Serial.printf("Precipitation: %.2f mm\n", reading.precipitation);
     Serial.printf("Light: %lu lux (%.2f W/m²)\n", reading.lux, reading.solarIrradiance);
@@ -222,6 +235,8 @@ void DataFormatter::printAggregated(const AggregatedData& data) {
                   data.humidityAvg, data.humidityMin, data.humidityMax);
     Serial.printf("Pressure: %.2f hPa (min: %.2f, max: %.2f)\n",
                   data.pressureAvg, data.pressureMin, data.pressureMax);
+    Serial.printf("Gas Resistance: %.2f KOhms (min: %.2f, max: %.2f)\n",
+                  data.gasResistanceAvg, data.gasResistanceMin, data.gasResistanceMax);
     Serial.printf("Wind: %.2f m/s avg (max: %.2f) @ %u°\n",
                   data.windSpeedAvg, data.windSpeedMax, data.windDirAvg);
     Serial.printf("Precipitation: %.2f mm\n", data.precipitation);

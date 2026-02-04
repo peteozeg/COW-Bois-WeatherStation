@@ -152,6 +152,7 @@ bool ESPNowHandler::sendWeatherData(const uint8_t* macAddress, const WeatherRead
     packet.temperature = (int16_t)(reading.temperature * 100);  // 2 decimal places
     packet.humidity = (uint16_t)(reading.humidity * 100);
     packet.pressure = (uint16_t)(reading.pressure * 10);  // 1 decimal place
+    packet.gasResistance = (uint16_t)(min(reading.gasResistance * 10.0f, 65535.0f));  // 1 decimal place, clamped
     packet.windSpeed = (uint16_t)(reading.windSpeed * 100);
     packet.windDirection = reading.windDirection;
     packet.precipitation = (uint16_t)(reading.precipitation * 100);

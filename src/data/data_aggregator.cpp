@@ -30,6 +30,10 @@ void DataAggregator::reset() {
     _pressureMin = FLT_MAX;
     _pressureMax = 0;
 
+    _gasResistanceSum = 0;
+    _gasResistanceMin = FLT_MAX;
+    _gasResistanceMax = 0;
+
     _windSpeedSum = 0;
     _windSpeedMax = 0;
 
@@ -70,6 +74,11 @@ void DataAggregator::addSample(const WeatherReading& reading) {
     _pressureSum += reading.pressure;
     if (reading.pressure < _pressureMin) _pressureMin = reading.pressure;
     if (reading.pressure > _pressureMax) _pressureMax = reading.pressure;
+
+    // Gas Resistance
+    _gasResistanceSum += reading.gasResistance;
+    if (reading.gasResistance < _gasResistanceMin) _gasResistanceMin = reading.gasResistance;
+    if (reading.gasResistance > _gasResistanceMax) _gasResistanceMax = reading.gasResistance;
 
     // Wind speed
     _windSpeedSum += reading.windSpeed;
@@ -121,6 +130,9 @@ AggregatedData DataAggregator::getAggregatedData() {
         data.pressureAvg = 0;
         data.pressureMin = 0;
         data.pressureMax = 0;
+        data.gasResistanceAvg = 0;
+        data.gasResistanceMin = 0;
+        data.gasResistanceMax = 0;
         data.windSpeedAvg = 0;
         data.windSpeedMax = 0;
         data.windDirAvg = 0;
@@ -147,6 +159,10 @@ AggregatedData DataAggregator::getAggregatedData() {
     data.pressureAvg = _pressureSum / _sampleCount;
     data.pressureMin = _pressureMin;
     data.pressureMax = _pressureMax;
+
+    data.gasResistanceAvg = _gasResistanceSum / _sampleCount;
+    data.gasResistanceMin = _gasResistanceMin;
+    data.gasResistanceMax = _gasResistanceMax;
 
     data.windSpeedAvg = _windSpeedSum / _sampleCount;
     data.windSpeedMax = _windSpeedMax;
@@ -198,6 +214,8 @@ float DataAggregator::getCurrentAverage(DataField field) const {
             return _humiditySum / _sampleCount;
         case DataField::PRESSURE:
             return _pressureSum / _sampleCount;
+        case DataField::GAS_RESISTANCE:
+            return _gasResistanceSum / _sampleCount;
         case DataField::WIND_SPEED:
             return _windSpeedSum / _sampleCount;
         case DataField::WIND_DIRECTION: {

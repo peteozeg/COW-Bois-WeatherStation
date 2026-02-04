@@ -8,7 +8,7 @@
 
 #include <Arduino.h>
 #include "data/weather_data.h"
-#include "sensors/bme280_sensor.h"
+#include "sensors/bme680_sensor.h"
 #include "sensors/tsl2591_sensor.h"
 #include "sensors/sgp30_sensor.h"
 #include "sensors/wind_sensor.h"
@@ -49,14 +49,14 @@ public:
     void calibrate();
 
     // Individual sensor access (for testing)
-    BME280Sensor& getBME280() { return _bme280; }
+    BME680Sensor& getBME680() { return _bme680; }
     TSL2591Sensor& getTSL2591() { return _tsl2591; }
     SGP30Sensor& getSGP30() { return _sgp30; }
     WindSensor& getWindSensor() { return _wind; }
     PrecipitationSensor& getPrecipitation() { return _precip; }
 
 private:
-    BME280Sensor _bme280;
+    BME680Sensor _bme680;
     TSL2591Sensor _tsl2591;
     SGP30Sensor _sgp30;
     WindSensor _wind;

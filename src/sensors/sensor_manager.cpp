@@ -12,12 +12,12 @@ SensorManager::SensorManager() : _initialized(false) {
 bool SensorManager::begin() {
     DEBUG_PRINTLN("SensorManager: Initializing all sensors...");
 
-    // Initialize BME280 (Temperature, Humidity, Pressure)
-    _status.bme280_ok = _bme280.begin();
-    if (_status.bme280_ok) {
-        DEBUG_PRINTLN("  BME280: OK");
+    // Initialize BME680 (Temperature, Humidity, Pressure)
+    _status.bme680_ok = _bme680.begin();
+    if (_status.bme680_ok) {
+        DEBUG_PRINTLN("  BME680: OK");
     } else {
-        DEBUG_PRINTLN("  BME280: FAILED");
+        DEBUG_PRINTLN("  BME680: FAILED");
     }
 
     // Initialize TSL2591 (Solar Radiation)
@@ -52,8 +52,8 @@ bool SensorManager::begin() {
         DEBUG_PRINTLN("  Precipitation: FAILED");
     }
 
-    // Consider initialized if at least BME280 works (critical sensor)
-    _initialized = _status.bme280_ok;
+    // Consider initialized if at least BME680 works (critical sensor)
+    _initialized = _status.bme680_ok;
 
     DEBUG_PRINTF("SensorManager: Initialization %s\n",
                  _initialized ? "complete" : "failed");
@@ -70,12 +70,14 @@ bool SensorManager::readAll(WeatherReading& reading) {
     reading.timestamp = millis();
     reading.isValid = true;
 
-    // Read BME280
-    if (_status.bme280_ok) {
-        if (!_bme280.readAll(reading.temperature, reading.humidity, reading.pressure)) {
+    // Read BME680 (Temperature, Humidity, Pressure, Gas Resistance)
+    if (_status.bme680_ok) {
+        if (!_bme680.readAllWithGas(reading.temperature, reading.humidity,
+                                     reading.pressure, reading.gasResistance)) {
             reading.temperature = 0;
             reading.humidity = 0;
             reading.pressure = 0;
+            reading.gasResistance = 0;
         }
     }
 
@@ -88,7 +90,7 @@ bool SensorManager::readAll(WeatherReading& reading) {
     // Read SGP30
     if (_status.sgp30_ok) {
         // Set humidity compensation if available
-        if (_status.bme280_ok && reading.humidity > 0) {
+        if (_status.bme680_ok && reading.humidity > 0) {
             float absHumidity = SGP30Sensor::calculateAbsoluteHumidity(
                 reading.temperature, reading.humidity);
             _sgp30.setHumidityCompensation(absHumidity);
@@ -125,14 +127,14 @@ bool SensorManager::selfTest() {
 
     bool allPass = true;
 
-    // Test BME280
-    if (_status.bme280_ok) {
-        float temp = _bme280.readTemperature();
+    // Test BME680
+    if (_status.bme680_ok) {
+        float temp = _bme680.readTemperature();
         if (temp < -40 || temp > 85) {
-            DEBUG_PRINTLN("  BME280 self-test: FAILED (temp out of range)");
+            DEBUG_PRINTLN("  BME680 self-test: FAILED (temp out of range)");
             allPass = false;
         } else {
-            DEBUG_PRINTF("  BME280 self-test: PASS (temp=%.1f°C)\n", temp);
+            DEBUG_PRINTF("  BME680 self-test: PASS (temp=%.1f°C)\n", temp);
         }
     }
 

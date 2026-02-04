@@ -15,6 +15,7 @@ enum class DataField {
     TEMPERATURE,
     HUMIDITY,
     PRESSURE,
+    GAS_RESISTANCE,
     WIND_SPEED,
     WIND_DIRECTION,
     PRECIPITATION,
@@ -92,6 +93,10 @@ private:
     float _pressureSum;
     float _pressureMin;
     float _pressureMax;
+
+    float _gasResistanceSum;
+    float _gasResistanceMin;
+    float _gasResistanceMax;
 
     float _windSpeedSum;
     float _windSpeedMax;
