@@ -136,7 +136,7 @@ void setHumidityCompensation() {
 
     Serial.printf("Humidity compensation set: %.1f°C, %.1f%% RH\n", temp, humid);
     Serial.printf("Absolute humidity: %lu mg/m³\n", absHumid);
-    Serial.println("For best accuracy, update this periodically from BME280 readings.\n");
+    Serial.println("For best accuracy, update this periodically from BME680 readings.\n");
 }
 
 void printHelp() {

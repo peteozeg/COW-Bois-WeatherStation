@@ -24,8 +24,8 @@ struct KnownDevice {
 KnownDevice knownDevices[] = {
     {0x29, "TSL2591 (Light)"},
     {0x58, "SGP30 (Air Quality)"},
-    {0x76, "BME280 (Temp/Humid/Press)"},
-    {0x77, "BME280 (Alt Address)"},
+    {0x76, "BME680 (Temp/Humid/Press/Gas)"},
+    {0x77, "BME680 (Alt Address)"},
     {0x48, "ADS1115 (ADC)"},
     {0x50, "EEPROM"},
 };
@@ -67,16 +67,16 @@ void scanI2C() {
     // Check for expected devices
     Serial.println("Expected Devices Check:");
 
-    // Check BME280
+    // Check BME680
     Wire.beginTransmission(0x76);
     if (Wire.endTransmission() == 0) {
-        Serial.println("  [OK] BME280 at 0x76");
+        Serial.println("  [OK] BME680 at 0x76");
     } else {
         Wire.beginTransmission(0x77);
         if (Wire.endTransmission() == 0) {
-            Serial.println("  [OK] BME280 at 0x77 (alternate address)");
+            Serial.println("  [OK] BME680 at 0x77 (alternate address)");
         } else {
-            Serial.println("  [MISSING] BME280 - Check wiring!");
+            Serial.println("  [MISSING] BME680 - Check wiring!");
         }
     }
 

@@ -59,7 +59,7 @@ void printReadings() {
     uint32_t lum = tsl.getFullLuminosity();
     uint16_t ir = lum >> 16;
     uint16_t full = lum & 0xFFFF;
-    uint16_t visible = full - ir;
+    uint16_t visible = (full > ir) ? (full - ir) : 0;
 
     float lux = tsl.calculateLux(full, ir);
     float irradiance = lux * LUX_TO_WM2;
