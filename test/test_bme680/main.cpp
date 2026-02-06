@@ -20,7 +20,7 @@
 // I2C pins
 #define I2C_SDA 21
 #define I2C_SCL 22
-#define BME680_ADDR 0x76  // Try 0x77 if this doesn't work
+#define BME680_ADDR 0x77  // Default address (0x76 if SDO pin is grounded)
 
 Adafruit_BME680 bme;
 bool sensorOK = false;
