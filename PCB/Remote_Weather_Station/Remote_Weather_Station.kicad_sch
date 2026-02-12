@@ -5677,7 +5677,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1uF"
+		(property "Value" "1u"
 			(at 36.83 59.6962 0)
 			(effects
 				(font
@@ -5686,7 +5686,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 34.29 58.42 0)
 			(effects
 				(font
@@ -5705,6 +5705,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 34.29 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C28323"
 			(at 34.29 58.42 0)
 			(effects
 				(font
@@ -5970,7 +5979,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 214.63 67.31 0)
 			(effects
 				(font
@@ -6443,7 +6452,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 106.68 158.75 0)
 			(effects
 				(font
@@ -6511,7 +6520,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 55.88 152.4 0)
 			(effects
 				(font
@@ -6666,7 +6675,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 27.94 140.97 0)
 			(effects
 				(font
@@ -6802,7 +6811,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 85.09 140.97 0)
 			(effects
 				(font
@@ -6872,7 +6881,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 76.2 30.48 0)
 			(effects
 				(font
@@ -6891,6 +6900,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 76.2 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C49678"
 			(at 76.2 30.48 0)
 			(effects
 				(font
@@ -7077,7 +7095,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 223.52 67.31 0)
 			(effects
 				(font
@@ -7478,7 +7496,7 @@
 				)
 			)
 		)
-		(property "Value" "1uF"
+		(property "Value" "1u"
 			(at 248.9263 25.4 90)
 			(effects
 				(font
@@ -7486,7 +7504,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 248.92 29.21 0)
 			(effects
 				(font
@@ -7513,7 +7531,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB#" ""
+		(property "JLCPCB#" "C28323"
 			(at 248.92 29.21 0)
 			(effects
 				(font
@@ -7840,7 +7858,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 88.9 181.61 0)
 			(effects
 				(font
@@ -8195,7 +8213,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 114.3 104.14 0)
 			(effects
 				(font
@@ -8490,7 +8508,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 115.57 30.48 0)
 			(effects
 				(font
@@ -8509,6 +8527,15 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
+			(at 115.57 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
 			(at 115.57 30.48 0)
 			(effects
 				(font
@@ -8626,7 +8653,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 60.96 170.18 0)
 			(effects
 				(font
@@ -8877,7 +8904,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1uF"
+		(property "Value" "1u"
 			(at 166.37 33.0262 0)
 			(effects
 				(font
@@ -8886,7 +8913,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 163.83 31.75 0)
 			(effects
 				(font
@@ -8905,6 +8932,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 163.83 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C28323"
 			(at 163.83 31.75 0)
 			(effects
 				(font
@@ -9369,7 +9405,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 34.29 44.45 0)
 			(effects
 				(font
@@ -9429,7 +9465,7 @@
 				)
 			)
 		)
-		(property "Value" "1uF"
+		(property "Value" "1u"
 			(at 203.2063 25.4 90)
 			(effects
 				(font
@@ -9437,7 +9473,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 203.2 29.21 0)
 			(effects
 				(font
@@ -9464,7 +9500,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB#" ""
+		(property "JLCPCB#" "C28323"
 			(at 203.2 29.21 0)
 			(effects
 				(font
@@ -9516,7 +9552,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 101.6 80.01 0)
 			(effects
 				(font
@@ -9738,7 +9774,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 82.55 187.96 0)
 			(effects
 				(font
@@ -9932,7 +9968,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1uF"
+		(property "Value" "1u"
 			(at 90.17 31.7562 0)
 			(effects
 				(font
@@ -9941,7 +9977,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 87.63 30.48 0)
 			(effects
 				(font
@@ -9960,6 +9996,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 87.63 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C28323"
 			(at 87.63 30.48 0)
 			(effects
 				(font
@@ -10009,7 +10054,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 245.11 67.31 0)
 			(effects
 				(font
@@ -10341,7 +10386,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 237.49 67.31 0)
 			(effects
 				(font
@@ -10402,7 +10447,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1uF"
+		(property "Value" "1u"
 			(at 229.87 95.2562 0)
 			(effects
 				(font
@@ -10411,7 +10456,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 227.33 93.98 0)
 			(effects
 				(font
@@ -10438,7 +10483,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB#" ""
+		(property "JLCPCB#" "C28323"
 			(at 227.33 93.98 0)
 			(effects
 				(font
@@ -10771,7 +10816,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 113.03 152.4 0)
 			(effects
 				(font
@@ -11198,7 +11243,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 49.53 158.75 0)
 			(effects
 				(font
@@ -11335,7 +11380,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 111.76 80.01 0)
 			(effects
 				(font

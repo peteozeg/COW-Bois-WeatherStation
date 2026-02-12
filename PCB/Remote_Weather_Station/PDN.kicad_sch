@@ -785,7 +785,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:R_Small"
+		(symbol "Device:R_Small_US"
 			(pin_numbers
 				(hide yes)
 			)
@@ -797,19 +797,21 @@
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "R"
-				(at 0 0 90)
-				(effects
-					(font
-						(size 1.016 1.016)
-					)
-				)
-			)
-			(property "Value" "R_Small"
-				(at 1.778 0 90)
+				(at 0.762 0.508 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
+				)
+			)
+			(property "Value" "R_Small_US"
+				(at 0.762 -1.016 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
 				)
 			)
 			(property "Footprint" ""
@@ -830,7 +832,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Resistor, small symbol"
+			(property "Description" "Resistor, small US symbol"
 				(at 0 0 0)
 				(effects
 					(font
@@ -839,7 +841,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "R resistor"
+			(property "ki_keywords" "r resistor"
 				(at 0 0 0)
 				(effects
 					(font
@@ -857,23 +859,34 @@
 					(hide yes)
 				)
 			)
-			(symbol "R_Small_0_1"
-				(rectangle
-					(start -0.762 1.778)
-					(end 0.762 -1.778)
+			(symbol "R_Small_US_1_1"
+				(polyline
+					(pts
+						(xy 0 1.524) (xy 1.016 1.143) (xy 0 0.762) (xy -1.016 0.381) (xy 0 0)
+					)
 					(stroke
-						(width 0.2032)
+						(width 0)
 						(type default)
 					)
 					(fill
 						(type none)
 					)
 				)
-			)
-			(symbol "R_Small_1_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 1.016 -0.381) (xy 0 -0.762) (xy -1.016 -1.143) (xy 0 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(pin passive line
 					(at 0 2.54 270)
-					(length 0.762)
+					(length 1.016)
 					(name "~"
 						(effects
 							(font
@@ -891,7 +904,7 @@
 				)
 				(pin passive line
 					(at 0 -2.54 90)
-					(length 0.762)
+					(length 1.016)
 					(name "~"
 						(effects
 							(font
@@ -2125,7 +2138,7 @@
 		(uuid "e26d6dd0-a250-403f-92d0-5e9ce9864ba4")
 	)
 	(symbol
-		(lib_id "Device:R_Small")
+		(lib_id "Device:R_Small_US")
 		(at 130.81 134.62 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2152,7 +2165,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 130.81 134.62 0)
 			(effects
 				(font
@@ -2170,7 +2183,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" "Resistor, small US symbol"
 			(at 130.81 134.62 0)
 			(effects
 				(font
@@ -2213,7 +2226,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "10u"
 			(at 207.01 88.9062 0)
 			(effects
 				(font
@@ -2222,7 +2235,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 204.47 87.63 0)
 			(effects
 				(font
@@ -2241,6 +2254,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 204.47 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C15850"
 			(at 204.47 87.63 0)
 			(effects
 				(font
@@ -2620,7 +2642,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
 			(at 86.36 135.89 0)
 			(effects
 				(font
@@ -2641,6 +2663,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 86.36 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C220433"
 			(at 86.36 135.89 0)
 			(effects
 				(font
@@ -2677,7 +2708,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Small")
+		(lib_id "Device:R_Small_US")
 		(at 130.81 151.13 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2704,7 +2735,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 130.81 151.13 0)
 			(effects
 				(font
@@ -2722,7 +2753,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" "Resistor, small US symbol"
 			(at 130.81 151.13 0)
 			(effects
 				(font
@@ -2765,7 +2796,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "10u"
 			(at 207.01 114.3062 0)
 			(effects
 				(font
@@ -2774,7 +2805,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 204.47 113.03 0)
 			(effects
 				(font
@@ -2793,6 +2824,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 204.47 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C15850"
 			(at 204.47 113.03 0)
 			(effects
 				(font
@@ -2974,7 +3014,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
 			(at 86.36 67.31 0)
 			(effects
 				(font
@@ -2995,6 +3035,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C138335"
 			(at 86.36 67.31 0)
 			(effects
 				(font
@@ -3115,7 +3164,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "10u"
 			(at 53.34 64.7762 0)
 			(effects
 				(font
@@ -3124,7 +3173,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 50.8 63.5 0)
 			(effects
 				(font
@@ -3143,6 +3192,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 50.8 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C15850"
 			(at 50.8 63.5 0)
 			(effects
 				(font
@@ -3211,6 +3269,15 @@
 			)
 		)
 		(property "Description" "1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223"
+			(at 223.52 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C6186"
 			(at 223.52 82.55 0)
 			(effects
 				(font
@@ -3370,7 +3437,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Small")
+		(lib_id "Device:R_Small_US")
 		(at 130.81 66.04 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3397,7 +3464,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 130.81 66.04 0)
 			(effects
 				(font
@@ -3415,7 +3482,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" "Resistor, small US symbol"
+			(at 130.81 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
 			(at 130.81 66.04 0)
 			(effects
 				(font
@@ -3458,7 +3534,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "10u"
 			(at 41.91 132.0862 0)
 			(effects
 				(font
@@ -3467,7 +3543,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 39.37 130.81 0)
 			(effects
 				(font
@@ -3486,6 +3562,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 39.37 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C15850"
 			(at 39.37 130.81 0)
 			(effects
 				(font
@@ -3526,7 +3611,7 @@
 				)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "100n"
 			(at 111.76 62.23 90)
 			(effects
 				(font
@@ -3534,7 +3619,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 111.76 57.15 0)
 			(effects
 				(font
@@ -3554,6 +3639,15 @@
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
 			(at 111.76 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C49678"
+			(at 111.76 57.15 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3661,7 +3755,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "22uF (not super low ESR tho)"
+		(property "Value" "22u"
 			(at 236.22 88.9062 0)
 			(effects
 				(font
@@ -3670,7 +3764,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 233.68 87.63 0)
 			(effects
 				(font
@@ -3689,6 +3783,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 233.68 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C12891"
 			(at 233.68 87.63 0)
 			(effects
 				(font
@@ -3862,7 +3965,7 @@
 				)
 			)
 		)
-		(property "Value" "4.7uH"
+		(property "Value" "4.7u"
 			(at 124.46 54.61 90)
 			(effects
 				(font
@@ -3913,7 +4016,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Small")
+		(lib_id "Device:R_Small_US")
 		(at 130.81 82.55 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3940,7 +4043,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 130.81 82.55 0)
 			(effects
 				(font
@@ -3958,7 +4061,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" "Resistor, small US symbol"
 			(at 130.81 82.55 0)
 			(effects
 				(font
@@ -4132,7 +4235,7 @@
 				)
 			)
 		)
-		(property "Value" "4.7uH"
+		(property "Value" "4.7u"
 			(at 124.46 123.19 90)
 			(effects
 				(font
@@ -4201,7 +4304,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "10u"
 			(at 41.91 64.7762 0)
 			(effects
 				(font
@@ -4210,7 +4313,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 39.37 63.5 0)
 			(effects
 				(font
@@ -4229,6 +4332,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 39.37 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C15850"
 			(at 39.37 63.5 0)
 			(effects
 				(font
@@ -4271,7 +4383,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "10u"
 			(at 53.34 132.0862 0)
 			(effects
 				(font
@@ -4280,7 +4392,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 50.8 130.81 0)
 			(effects
 				(font
@@ -4299,6 +4411,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 50.8 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C15850"
 			(at 50.8 130.81 0)
 			(effects
 				(font
@@ -4339,7 +4460,7 @@
 				)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "100n"
 			(at 111.76 130.81 90)
 			(effects
 				(font
@@ -4347,7 +4468,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 111.76 125.73 0)
 			(effects
 				(font
@@ -4367,6 +4488,15 @@
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
 			(at 111.76 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C49678"
+			(at 111.76 125.73 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4408,7 +4538,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47uF"
+		(property "Value" "47u"
 			(at 146.05 76.2062 0)
 			(effects
 				(font
@@ -4417,7 +4547,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 143.51 74.93 0)
 			(effects
 				(font
@@ -4436,6 +4566,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 143.51 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C96123"
 			(at 143.51 74.93 0)
 			(effects
 				(font
@@ -4512,6 +4651,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB#" "C6187"
+			(at 223.52 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "f6eabab1-cd08-4707-8962-d4cc9ad853af")
 		)
@@ -4549,7 +4697,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "22uF (not super low ESR tho)"
+		(property "Value" "22u"
 			(at 236.22 114.3062 0)
 			(effects
 				(font
@@ -4558,7 +4706,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 233.68 113.03 0)
 			(effects
 				(font
@@ -4577,6 +4725,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 233.68 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C12891"
 			(at 233.68 113.03 0)
 			(effects
 				(font
@@ -4619,7 +4776,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47uF"
+		(property "Value" "47u"
 			(at 146.05 144.7862 0)
 			(effects
 				(font
@@ -4628,7 +4785,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 143.51 143.51 0)
 			(effects
 				(font
@@ -4647,6 +4804,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 143.51 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C96123"
 			(at 143.51 143.51 0)
 			(effects
 				(font
