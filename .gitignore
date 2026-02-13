@@ -7,3 +7,6 @@
 *.swp
 *.swo
 *~
+
+# Credentials (use secrets.h.template as reference)
+include/secrets.h
