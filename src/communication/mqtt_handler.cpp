@@ -183,6 +183,7 @@ void MQTTHandler::formatWeatherPayload(const WeatherReading& reading, char* buff
         "\"temperature\":%.2f,"
         "\"humidity\":%.2f,"
         "\"pressure\":%.2f,"
+        "\"gas_resistance\":%.2f,"
         "\"wind_speed\":%.2f,"
         "\"wind_direction\":%u,"
         "\"precipitation\":%.2f,"
@@ -196,6 +197,7 @@ void MQTTHandler::formatWeatherPayload(const WeatherReading& reading, char* buff
         reading.temperature,
         reading.humidity,
         reading.pressure,
+        reading.gasResistance,
         reading.windSpeed,
         reading.windDirection,
         reading.precipitation,
