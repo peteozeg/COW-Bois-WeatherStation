@@ -2,8 +2,8 @@
  * COW-Bois Weather Station - ESP-NOW Test
  *
  * Interactive test sketch to verify ESP-NOW communication between devices.
- * Supports both sender and receiver modes for testing microstation-to-main
- * station communication.
+ * Uses the actual ESPNowHandler class from the project to validate the
+ * production code path.
  *
  * Upload: pio run -e test_espnow -t upload
  * Monitor: pio device monitor
@@ -14,12 +14,12 @@
  */
 
 #include <Arduino.h>
-#include <esp_now.h>
 #include <WiFi.h>
 
-// Include project headers
+// Include project headers - using production code
 #include "config.h"
 #include "data/weather_data.h"
+#include "communication/espnow_handler.h"
 
 // ============================================
 // Forward Declarations
@@ -29,7 +29,7 @@ void printRawData(const uint8_t* data, int len);
 // ============================================
 // Global State
 // ============================================
-bool espnowInitialized = false;
+ESPNowHandler espnow;  // Production ESP-NOW handler
 bool isSenderMode = false;
 uint8_t peerMAC[6] = {0};
 bool hasPeer = false;
@@ -37,14 +37,14 @@ uint32_t packetsSent = 0;
 uint32_t packetsReceived = 0;
 
 // ============================================
-// Callbacks
+// Callbacks (using ESPNowHandler signatures)
 // ============================================
-void onDataSent(const uint8_t* macAddr, esp_now_send_status_t status) {
+void onSendCallback(const uint8_t* macAddr, bool success) {
     Serial.print(F("Send to "));
     Serial.printf("%02X:%02X:%02X:%02X:%02X:%02X ",
                   macAddr[0], macAddr[1], macAddr[2],
                   macAddr[3], macAddr[4], macAddr[5]);
-    if (status == ESP_NOW_SEND_SUCCESS) {
+    if (success) {
         Serial.println(F("SUCCESS"));
         packetsSent++;
     } else {
@@ -52,7 +52,7 @@ void onDataSent(const uint8_t* macAddr, esp_now_send_status_t status) {
     }
 }
 
-void onDataReceived(const uint8_t* macAddr, const uint8_t* data, int len) {
+void onReceiveCallback(const uint8_t* macAddr, const uint8_t* data, int len) {
     packetsReceived++;
 
     Serial.println();
@@ -62,41 +62,28 @@ void onDataReceived(const uint8_t* macAddr, const uint8_t* data, int len) {
                   macAddr[3], macAddr[4], macAddr[5]);
     Serial.printf("Length: %d bytes\n", len);
 
-    // Check if it's a weather packet
-    if (len == sizeof(ESPNowPacket)) {
-        ESPNowPacket packet;
-        memcpy(&packet, data, sizeof(ESPNowPacket));
-
-        // Verify checksum
-        uint8_t checksum = 0;
-        for (size_t i = 0; i < sizeof(ESPNowPacket) - 1; i++) {
-            checksum ^= data[i];
-        }
-
-        if (checksum == packet.checksum && packet.packetType == 0x01) {
-            Serial.println(F("Type: Weather Data Packet"));
-            Serial.printf("Station ID: %s\n", packet.stationId);
-            Serial.printf("Timestamp: %lu\n", packet.timestamp);
-            Serial.println(F("--- Sensor Data ---"));
-            Serial.printf("Temperature: %.2f C\n", packet.temperature / 100.0f);
-            Serial.printf("Humidity: %.2f %%\n", packet.humidity / 100.0f);
-            Serial.printf("Pressure: %.1f hPa\n", packet.pressure / 10.0f);
-            Serial.printf("Gas Resistance: %.1f KOhms\n", packet.gasResistance / 10.0f);
-            Serial.printf("Wind Speed: %.2f m/s\n", packet.windSpeed / 100.0f);
-            Serial.printf("Wind Direction: %d deg\n", packet.windDirection);
-            Serial.printf("Precipitation: %.2f mm\n", packet.precipitation / 100.0f);
-            Serial.printf("Lux: %lu\n", packet.lux);
-            Serial.printf("CO2: %d ppm\n", packet.co2);
-            Serial.printf("TVOC: %d ppb\n", packet.tvoc);
-            Serial.printf("Battery: %d mV\n", packet.batteryVoltage);
-            Serial.printf("Flags: 0x%02X (valid=%d)\n", packet.flags, packet.flags & 0x01);
-            Serial.println(F("Checksum: VALID"));
-        } else {
-            Serial.println(F("Type: Unknown/Invalid weather packet"));
-            printRawData(data, len);
-        }
+    // Try to parse as weather packet using production code
+    ESPNowPacket packet;
+    if (espnow.parseWeatherPacket(data, len, packet)) {
+        Serial.println(F("Type: Weather Data Packet"));
+        Serial.printf("Station ID: %s\n", packet.stationId);
+        Serial.printf("Timestamp: %lu\n", packet.timestamp);
+        Serial.println(F("--- Sensor Data ---"));
+        Serial.printf("Temperature: %.2f C\n", packet.temperature / 100.0f);
+        Serial.printf("Humidity: %.2f %%\n", packet.humidity / 100.0f);
+        Serial.printf("Pressure: %.1f hPa\n", packet.pressure / 10.0f);
+        Serial.printf("Gas Resistance: %.1f KOhms\n", packet.gasResistance / 10.0f);
+        Serial.printf("Wind Speed: %.2f m/s\n", packet.windSpeed / 100.0f);
+        Serial.printf("Wind Direction: %d deg\n", packet.windDirection);
+        Serial.printf("Precipitation: %.2f mm\n", packet.precipitation / 100.0f);
+        Serial.printf("Lux: %lu\n", packet.lux);
+        Serial.printf("CO2: %d ppm\n", packet.co2);
+        Serial.printf("TVOC: %d ppb\n", packet.tvoc);
+        Serial.printf("Battery: %d mV\n", packet.batteryVoltage);
+        Serial.printf("Flags: 0x%02X (valid=%d)\n", packet.flags, packet.flags & 0x01);
+        Serial.println(F("Checksum: VALID"));
     } else {
-        Serial.println(F("Type: Raw Data"));
+        Serial.println(F("Type: Raw Data (not a valid weather packet)"));
         printRawData(data, len);
     }
     Serial.println(F("======================================"));
@@ -126,7 +113,7 @@ void printRawData(const uint8_t* data, int len) {
 void printHelp() {
     Serial.println();
     Serial.println(F("========== ESP-NOW Test Commands =========="));
-    Serial.println(F("  i - Initialize ESP-NOW"));
+    Serial.println(F("  i - Initialize ESP-NOW (ESPNowHandler)"));
     Serial.println(F("  d - Deinitialize ESP-NOW"));
     Serial.println(F("  m - Show MAC address"));
     Serial.println(F("  s - Set SENDER mode"));
@@ -135,21 +122,22 @@ void printHelp() {
     Serial.println(F("  b - Add broadcast peer (FF:FF:FF:FF:FF:FF)"));
     Serial.println(F("  c - Clear peer"));
     Serial.println(F("  t - Send TEST packet (raw bytes)"));
-    Serial.println(F("  w - Send WEATHER packet"));
+    Serial.println(F("  w - Send WEATHER packet (via ESPNowHandler)"));
     Serial.println(F("  x - Show statistics"));
     Serial.println(F("  h - Show this help"));
     Serial.println(F("============================================="));
+    Serial.println(F("NOTE: This test uses the production ESPNowHandler class"));
     Serial.println();
 }
 
 void printStatus() {
     Serial.println();
     Serial.println(F("--- Current Status ---"));
-    Serial.printf("ESP-NOW: %s\n", espnowInitialized ? "Initialized" : "Not initialized");
+    Serial.printf("ESP-NOW: %s\n", espnow.isInitialized() ? "Initialized" : "Not initialized");
     Serial.printf("Mode: %s\n", isSenderMode ? "SENDER" : "RECEIVER");
 
     uint8_t mac[6];
-    WiFi.macAddress(mac);
+    espnow.getMacAddress(mac);
     Serial.printf("This MAC: %02X:%02X:%02X:%02X:%02X:%02X\n",
                   mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
@@ -161,39 +149,34 @@ void printStatus() {
         Serial.println(F("Peer MAC: None"));
     }
 
-    Serial.printf("Packets Sent: %lu\n", packetsSent);
-    Serial.printf("Packets Received: %lu\n", packetsReceived);
+    Serial.printf("Packets Sent: %u\n", packetsSent);
+    Serial.printf("Packets Received: %u\n", packetsReceived);
     Serial.println();
 }
 
 bool initESPNow() {
-    if (espnowInitialized) {
+    if (espnow.isInitialized()) {
         Serial.println(F("ESP-NOW already initialized"));
         return true;
     }
 
-    Serial.println(F("Initializing ESP-NOW..."));
+    Serial.println(F("Initializing ESP-NOW via ESPNowHandler..."));
 
-    // Set WiFi mode
-    WiFi.mode(WIFI_STA);
-    WiFi.disconnect();
-
-    // Initialize ESP-NOW
-    if (esp_now_init() != ESP_OK) {
-        Serial.println(F("ERROR: ESP-NOW init failed"));
+    // Use production ESPNowHandler
+    if (!espnow.begin()) {
+        Serial.println(F("ERROR: ESPNowHandler::begin() failed"));
         return false;
     }
 
-    // Register callbacks
-    esp_now_register_send_cb(onDataSent);
-    esp_now_register_recv_cb(onDataReceived);
+    // Set callbacks using production interface
+    espnow.setOnSendCallback(onSendCallback);
+    espnow.setOnReceiveCallback(onReceiveCallback);
 
-    espnowInitialized = true;
+    Serial.println(F("ESP-NOW initialized successfully (using ESPNowHandler)!"));
 
     // Print MAC address
     uint8_t mac[6];
-    WiFi.macAddress(mac);
-    Serial.println(F("ESP-NOW initialized successfully!"));
+    espnow.getMacAddress(mac);
     Serial.printf("MAC Address: %02X:%02X:%02X:%02X:%02X:%02X\n",
                   mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
@@ -201,13 +184,12 @@ bool initESPNow() {
 }
 
 void deinitESPNow() {
-    if (!espnowInitialized) {
+    if (!espnow.isInitialized()) {
         Serial.println(F("ESP-NOW not initialized"));
         return;
     }
 
-    esp_now_deinit();
-    espnowInitialized = false;
+    espnow.end();
     hasPeer = false;
     Serial.println(F("ESP-NOW deinitialized"));
 }
@@ -217,7 +199,6 @@ bool parseMACAddress(const char* str, uint8_t* mac) {
     if (sscanf(str, "%x:%x:%x:%x:%x:%x",
                &values[0], &values[1], &values[2],
                &values[3], &values[4], &values[5]) == 6) {
-        // Validate each byte is in range 0-255
         for (int i = 0; i < 6; i++) {
             if (values[i] < 0 || values[i] > 255) {
                 return false;
@@ -230,7 +211,7 @@ bool parseMACAddress(const char* str, uint8_t* mac) {
 }
 
 void addPeerInteractive() {
-    if (!espnowInitialized) {
+    if (!espnow.isInitialized()) {
         Serial.println(F("ERROR: Initialize ESP-NOW first (press 'i')"));
         return;
     }
@@ -275,17 +256,12 @@ void addPeerInteractive() {
 
     // Remove existing peer if any
     if (hasPeer) {
-        esp_now_del_peer(peerMAC);
+        espnow.removePeer(peerMAC);
     }
 
-    // Add new peer
-    esp_now_peer_info_t peerInfo = {};
-    memcpy(peerInfo.peer_addr, mac, 6);
-    peerInfo.channel = 0;
-    peerInfo.encrypt = false;
-
-    if (esp_now_add_peer(&peerInfo) != ESP_OK) {
-        Serial.println(F("ERROR: Failed to add peer"));
+    // Add new peer using production ESPNowHandler
+    if (!espnow.addPeer(mac)) {
+        Serial.println(F("ERROR: ESPNowHandler::addPeer() failed"));
         return;
     }
 
@@ -297,7 +273,7 @@ void addPeerInteractive() {
 }
 
 void addBroadcastPeer() {
-    if (!espnowInitialized) {
+    if (!espnow.isInitialized()) {
         Serial.println(F("ERROR: Initialize ESP-NOW first (press 'i')"));
         return;
     }
@@ -306,17 +282,12 @@ void addBroadcastPeer() {
 
     // Remove existing peer if any
     if (hasPeer) {
-        esp_now_del_peer(peerMAC);
+        espnow.removePeer(peerMAC);
     }
 
-    // Add broadcast peer
-    esp_now_peer_info_t peerInfo = {};
-    memcpy(peerInfo.peer_addr, broadcastMAC, 6);
-    peerInfo.channel = 0;
-    peerInfo.encrypt = false;
-
-    if (esp_now_add_peer(&peerInfo) != ESP_OK) {
-        Serial.println(F("ERROR: Failed to add broadcast peer"));
+    // Add broadcast peer using production ESPNowHandler
+    if (!espnow.addPeer(broadcastMAC)) {
+        Serial.println(F("ERROR: ESPNowHandler::addPeer() failed for broadcast"));
         return;
     }
 
@@ -327,7 +298,7 @@ void addBroadcastPeer() {
 }
 
 void clearPeer() {
-    if (!espnowInitialized) {
+    if (!espnow.isInitialized()) {
         Serial.println(F("ERROR: ESP-NOW not initialized"));
         return;
     }
@@ -337,14 +308,14 @@ void clearPeer() {
         return;
     }
 
-    esp_now_del_peer(peerMAC);
+    espnow.removePeer(peerMAC);
     hasPeer = false;
     memset(peerMAC, 0, 6);
     Serial.println(F("Peer cleared"));
 }
 
 void sendTestPacket() {
-    if (!espnowInitialized) {
+    if (!espnow.isInitialized()) {
         Serial.println(F("ERROR: Initialize ESP-NOW first (press 'i')"));
         return;
     }
@@ -361,15 +332,14 @@ void sendTestPacket() {
                   peerMAC[0], peerMAC[1], peerMAC[2],
                   peerMAC[3], peerMAC[4], peerMAC[5]);
 
-    esp_err_t result = esp_now_send(peerMAC, (uint8_t*)testMsg, strlen(testMsg) + 1);
-
-    if (result != ESP_OK) {
-        Serial.printf("ERROR: esp_now_send failed (%d)\n", result);
+    // Use production sendData()
+    if (!espnow.sendData(peerMAC, (uint8_t*)testMsg, strlen(testMsg) + 1)) {
+        Serial.println(F("ERROR: ESPNowHandler::sendData() failed"));
     }
 }
 
 void sendWeatherPacket() {
-    if (!espnowInitialized) {
+    if (!espnow.isInitialized()) {
         Serial.println(F("ERROR: Initialize ESP-NOW first (press 'i')"));
         return;
     }
@@ -379,47 +349,32 @@ void sendWeatherPacket() {
         return;
     }
 
-    // Create test weather packet with dummy data
-    ESPNowPacket packet;
-    packet.packetType = 0x01;
-
-    // Station ID from MAC
-    uint8_t mac[6];
-    WiFi.macAddress(mac);
-    snprintf(packet.stationId, sizeof(packet.stationId), "%02X%02X%02X%02X",
-             mac[2], mac[3], mac[4], mac[5]);
-
-    packet.timestamp = millis();
-    packet.temperature = 2350;       // 23.50 C
-    packet.humidity = 6500;          // 65.00 %
-    packet.pressure = 10132;         // 1013.2 hPa
-    packet.gasResistance = 1500;     // 150.0 KOhms
-    packet.windSpeed = 350;          // 3.50 m/s
-    packet.windDirection = 225;      // SW
-    packet.precipitation = 0;        // 0 mm
-    packet.lux = 45000;              // 45000 lux
-    packet.co2 = 420;                // 420 ppm
-    packet.tvoc = 50;                // 50 ppb
-    packet.batteryVoltage = 3850;    // 3850 mV
-    packet.flags = 0x01;             // Valid
-
-    // Calculate checksum
-    uint8_t* packetBytes = (uint8_t*)&packet;
-    uint8_t checksum = 0;
-    for (size_t i = 0; i < sizeof(ESPNowPacket) - 1; i++) {
-        checksum ^= packetBytes[i];
-    }
-    packet.checksum = checksum;
+    // Create test WeatherReading with dummy data
+    // This tests the production sendWeatherData() which packs the data
+    WeatherReading reading;
+    reading.timestamp = millis();
+    reading.temperature = 23.5f;
+    reading.humidity = 65.0f;
+    reading.pressure = 1013.2f;
+    reading.gasResistance = 150.0f;
+    reading.windSpeed = 3.5f;
+    reading.windDirection = 225;
+    reading.precipitation = 0.0f;
+    reading.lux = 45000;
+    reading.solarIrradiance = 355.5f;
+    reading.co2 = 420;
+    reading.tvoc = 50;
+    reading.isValid = true;
 
     Serial.printf("Sending weather packet to %02X:%02X:%02X:%02X:%02X:%02X...\n",
                   peerMAC[0], peerMAC[1], peerMAC[2],
                   peerMAC[3], peerMAC[4], peerMAC[5]);
-    Serial.printf("Packet size: %d bytes\n", sizeof(ESPNowPacket));
+    Serial.printf("Using ESPNowHandler::sendWeatherData() (packet size: %d bytes)\n",
+                  sizeof(ESPNowPacket));
 
-    esp_err_t result = esp_now_send(peerMAC, (uint8_t*)&packet, sizeof(ESPNowPacket));
-
-    if (result != ESP_OK) {
-        Serial.printf("ERROR: esp_now_send failed (%d)\n", result);
+    // Use production sendWeatherData() - this tests packet packing
+    if (!espnow.sendWeatherData(peerMAC, reading)) {
+        Serial.println(F("ERROR: ESPNowHandler::sendWeatherData() failed"));
     }
 }
 
@@ -433,16 +388,20 @@ void setup() {
     Serial.println();
     Serial.println(F("========================================="));
     Serial.println(F("   COW-Bois ESP-NOW Communication Test"));
+    Serial.println(F("   (Using Production ESPNowHandler)"));
     Serial.println(F("========================================="));
     Serial.println();
-    Serial.println(F("This test requires TWO ESP32 devices:"));
+    Serial.println(F("This test uses the actual ESPNowHandler class"));
+    Serial.println(F("from src/communication/espnow_handler.cpp"));
+    Serial.println();
+    Serial.println(F("Testing requires TWO ESP32 devices:"));
     Serial.println(F("  1. Device A: Set as RECEIVER (press 'r')"));
     Serial.println(F("  2. Device B: Set as SENDER (press 's')"));
     Serial.println(F("  3. On Device B: Add Device A's MAC (press 'a')"));
     Serial.println(F("  4. Send packets from Device B (press 't' or 'w')"));
     Serial.println();
 
-    // Auto-initialize ESP-NOW
+    // Auto-initialize ESP-NOW using production handler
     initESPNow();
 
     printHelp();
@@ -456,7 +415,6 @@ void loop() {
         while (Serial.available()) {
             char c = Serial.read();
             if (c != '\r' && c != '\n') {
-                // Put back if it's part of input (for MAC address)
                 break;
             }
         }
@@ -476,7 +434,7 @@ void loop() {
             case 'M':
                 {
                     uint8_t mac[6];
-                    WiFi.macAddress(mac);
+                    espnow.getMacAddress(mac);
                     Serial.printf("\nMAC Address: %02X:%02X:%02X:%02X:%02X:%02X\n\n",
                                   mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
                 }
