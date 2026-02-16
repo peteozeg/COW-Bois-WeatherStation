@@ -5,7 +5,7 @@
 	(uuid "a9f3e948-f0cb-4784-bed2-bdf72b5832ff")
 	(paper "A4")
 	(title_block
-		(title "Remote Weather Station")
+		(title "Weather Station")
 		(date "2026-01-22")
 		(rev "V1")
 		(company "Kansas State University")
@@ -3498,6 +3498,12 @@
 		(uuid "26dbc7c2-2a09-417d-b104-e2f1c89ee51e")
 	)
 	(junction
+		(at 116.84 110.49)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3006d976-decf-4061-bfed-1ace8c19b75f")
+	)
+	(junction
 		(at 239.395 86.36)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4184,6 +4190,16 @@
 			(type default)
 		)
 		(uuid "4b9e5026-05bf-4f6e-8ccc-f4bcf936fe54")
+	)
+	(wire
+		(pts
+			(xy 116.84 118.11) (xy 116.84 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4df44974-1cbb-4b8d-98f6-c235cd76f7b4")
 	)
 	(wire
 		(pts
@@ -4987,6 +5003,16 @@
 	)
 	(wire
 		(pts
+			(xy 116.84 110.49) (xy 116.84 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c0d69042-9ee1-4463-9dd8-5624f72a9940")
+	)
+	(wire
+		(pts
 			(xy 176.53 180.34) (xy 176.53 177.8)
 		)
 		(stroke
@@ -5514,6 +5540,16 @@
 			(type default)
 		)
 		(uuid "fc8931f7-4234-4934-b1d5-8aa9fa866ff7")
+	)
+	(wire
+		(pts
+			(xy 116.84 110.49) (xy 120.65 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fca0adf4-942e-43ef-a580-abe6fa0d9329")
 	)
 	(label "E_red_wire"
 		(at 257.175 73.66 180)
@@ -6161,7 +6197,7 @@
 	)
 	(global_label "Flash"
 		(shape bidirectional)
-		(at 116.84 110.49 0)
+		(at 120.65 110.49 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6171,7 +6207,7 @@
 		)
 		(uuid "d901b217-876d-4bbf-a7de-4921fc3444bf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 126.0164 110.49 0)
+			(at 129.8264 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9650,6 +9686,85 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C_Small")
+		(at 116.84 115.57 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "660e9ee9-6758-48a6-87de-e11e8f5f72d8")
+		(property "Reference" "C113"
+			(at 119.38 114.3062 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1u"
+			(at 119.38 116.8462 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 116.84 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 116.84 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 116.84 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C28323"
+			(at 116.84 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "14ab7d2f-ee3e-4577-8f75-c87faebbb8dd")
+		)
+		(pin "1"
+			(uuid "0687270f-4adf-4e74-a674-cf4624972528")
+		)
+		(instances
+			(project "Remote_Weather_Station"
+				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff"
+					(reference "C113")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Amplifier_Instrumentation:AD8236")
 		(at 162.56 168.91 0)
 		(unit 1)
@@ -13019,6 +13134,73 @@
 			(project "Remote_Weather_Station"
 				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff"
 					(reference "U104")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 116.84 120.65 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e720f090-04e4-42f0-83e2-bc3a3ca08adb")
+		(property "Reference" "#PWR0155"
+			(at 116.84 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 116.84 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 116.84 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 116.84 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 116.84 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "31d711b6-ac65-4b2c-9ba0-22ca18e59772")
+		)
+		(instances
+			(project "Remote_Weather_Station"
+				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff"
+					(reference "#PWR0155")
 					(unit 1)
 				)
 			)
