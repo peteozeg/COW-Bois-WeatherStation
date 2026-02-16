@@ -3381,6 +3381,17 @@
 		)
 		(uuid "4e1b7f72-9674-45ff-9087-91b47d3748c8")
 	)
+	(text "\"Boot\""
+		(exclude_from_sim no)
+		(at 92.456 50.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "61d2facd-54ca-4c8d-81fa-f31228c2be26")
+	)
 	(text "load_cell\nblack_wire"
 		(exclude_from_sim no)
 		(at 256.159 96.012 0)
