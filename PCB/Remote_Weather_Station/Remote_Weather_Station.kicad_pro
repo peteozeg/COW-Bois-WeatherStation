@@ -107,6 +107,7 @@
         "solder_mask_bridge": "error",
         "starved_thermal": "error",
         "text_height": "warning",
+        "text_on_edge_cuts": "error",
         "text_thickness": "warning",
         "through_hole_pad_without_hole": "error",
         "too_many_vias": "error",
@@ -612,6 +613,12 @@
           "label": "JLCPCB#",
           "name": "JLCPCB#",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Pins",
+          "name": "Sim.Pins",
+          "show": false
         }
       ],
       "filter_string": "",
@@ -671,6 +678,10 @@
     [
       "a9f3e948-f0cb-4784-bed2-bdf72b5832ff",
       "Root"
+    ],
+    [
+      "c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0",
+      "PDN"
     ]
   ],
   "text_variables": {}
