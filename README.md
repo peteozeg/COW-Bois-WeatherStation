@@ -1,2 +1,3 @@
-<img width="1035" height="718" alt="image" src="https://github.com/user-attachments/assets/f7c4041d-af26-435e-af31-cd63d8480cc3" />
-Schematic as of 2/6/2026
+<img width="1266" height="861" alt="image" src="https://github.com/user-attachments/assets/ae3d293d-fea3-4b3a-8158-cee228351823" />
+
+# Schematic as of 2/16/2026
