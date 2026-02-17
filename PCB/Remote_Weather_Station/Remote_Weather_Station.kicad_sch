@@ -12080,7 +12080,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB#" "C22775"
+		(property "JLCPCB#" ""
 			(at 25.4 168.91 0)
 			(effects
 				(font
