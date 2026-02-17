@@ -1301,7 +1301,7 @@
 	)
 	(rectangle
 		(start 191.135 70.485)
-		(end 251.46 137.795)
+		(end 251.46 157.48)
 		(stroke
 			(width 0)
 			(type dash)
@@ -1322,6 +1322,16 @@
 			(type none)
 		)
 		(uuid ba9fb9dc-23c3-43d3-932d-1b2859b3c569)
+	)
+	(text "71.5k"
+		(exclude_from_sim no)
+		(at 123.698 137.922 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "123b30f1-ca00-490c-8f6a-572e19565607")
 	)
 	(text "SMPS"
 		(exclude_from_sim no)
@@ -1382,6 +1392,12 @@
 		(uuid "7563adeb-7287-4150-963c-06f62150ffa6")
 	)
 	(junction
+		(at 130.81 143.51)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "76346219-6881-455f-bea3-7de1c908b9ae")
+	)
+	(junction
 		(at 66.04 57.15)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1400,6 +1416,12 @@
 		(uuid "abdebbb9-ebcb-4508-8d9a-d48646e72d0e")
 	)
 	(junction
+		(at 130.81 125.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b14d6047-d58f-4488-8728-115f493d542d")
+	)
+	(junction
 		(at 130.81 74.93)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1412,22 +1434,20 @@
 		(uuid "c5a27e89-a807-4840-bd43-d8d1de6616fb")
 	)
 	(junction
-		(at 130.81 143.51)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c7bdc2f3-587f-428a-bdb0-b7fdf361d929")
-	)
-	(junction
-		(at 130.81 125.73)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "e3da1796-2d10-4155-bae6-3a6734f07c7f")
-	)
-	(junction
 		(at 66.04 125.73)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "fac1b375-17cc-4720-a4c7-a4813d0e2785")
+	)
+	(wire
+		(pts
+			(xy 233.68 90.17) (xy 233.68 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "007da957-3daa-426b-a34e-ef7f6a29e3c1")
 	)
 	(wire
 		(pts
@@ -1461,6 +1481,16 @@
 	)
 	(wire
 		(pts
+			(xy 130.81 140.97) (xy 130.81 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0aee4359-8d67-4ff4-bed3-eda29372c8fc")
+	)
+	(wire
+		(pts
 			(xy 204.47 118.11) (xy 204.47 115.57)
 		)
 		(stroke
@@ -1491,13 +1521,13 @@
 	)
 	(wire
 		(pts
-			(xy 233.68 90.17) (xy 233.68 91.44)
+			(xy 130.81 133.35) (xy 130.81 135.89)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "1bc83d58-5e31-4451-bd44-8a46f117434c")
+		(uuid "1847a7ee-f682-4173-b657-56e6a1bcd0cb")
 	)
 	(wire
 		(pts
@@ -1551,6 +1581,16 @@
 	)
 	(wire
 		(pts
+			(xy 130.81 125.73) (xy 143.51 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2df87519-6eee-4601-ad04-42d91dcd1f12")
+	)
+	(wire
+		(pts
 			(xy 130.81 153.67) (xy 130.81 158.75)
 		)
 		(stroke
@@ -1601,6 +1641,16 @@
 	)
 	(wire
 		(pts
+			(xy 233.68 97.79) (xy 233.68 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3eb9439a-fd48-4f08-bbd8-a3966fe8849c")
+	)
+	(wire
+		(pts
 			(xy 204.47 85.09) (xy 204.47 82.55)
 		)
 		(stroke
@@ -1608,6 +1658,16 @@
 			(type default)
 		)
 		(uuid "406327d8-6dd3-4ec8-9455-7420d1b95804")
+	)
+	(wire
+		(pts
+			(xy 233.68 132.08) (xy 233.68 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41fba3b2-a5e4-45e6-9bf7-db970c75dd0f")
 	)
 	(wire
 		(pts
@@ -1648,16 +1708,6 @@
 			(type default)
 		)
 		(uuid "4e45c050-e42e-4198-8963-27a85241bb85")
-	)
-	(wire
-		(pts
-			(xy 130.81 137.16) (xy 130.81 143.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "520d87f8-8539-4b0e-9232-84989c7e8811")
 	)
 	(wire
 		(pts
@@ -1751,16 +1801,6 @@
 	)
 	(wire
 		(pts
-			(xy 130.81 132.08) (xy 130.81 125.73)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "63a24c9b-fc69-4e88-b83d-d34f5348e857")
-	)
-	(wire
-		(pts
 			(xy 68.58 133.35) (xy 66.04 133.35)
 		)
 		(stroke
@@ -1821,7 +1861,7 @@
 	)
 	(wire
 		(pts
-			(xy 233.68 123.19) (xy 233.68 124.46)
+			(xy 233.68 123.19) (xy 233.68 127)
 		)
 		(stroke
 			(width 0)
@@ -1888,16 +1928,6 @@
 			(type default)
 		)
 		(uuid "ad11933a-d466-4ae8-a8d2-b40f1826ddb1")
-	)
-	(wire
-		(pts
-			(xy 130.81 125.73) (xy 143.51 125.73)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ae4861ae-e995-4b0a-bb44-44fb9725c6ea")
 	)
 	(wire
 		(pts
@@ -2061,6 +2091,16 @@
 	)
 	(wire
 		(pts
+			(xy 130.81 125.73) (xy 130.81 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ec0f2902-0132-4e05-81fc-f534aa4431d9")
+	)
+	(wire
+		(pts
 			(xy 66.04 125.73) (xy 68.58 125.73)
 		)
 		(stroke
@@ -2185,7 +2225,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 130.81 134.62 0)
+		(at 130.81 130.81 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2193,8 +2233,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "005e0d95-1b34-4a83-b019-a4b7da1044f2")
-		(property "Reference" "R203"
-			(at 133.35 133.3499 0)
+		(property "Reference" "R205"
+			(at 133.35 129.5399 0)
 			(effects
 				(font
 					(size 1.016 1.016)
@@ -2202,8 +2242,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "71.5k"
-			(at 133.35 135.8899 0)
+		(property "Value" "68k"
+			(at 133.35 132.0799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2211,8 +2251,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 130.81 134.62 0)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 130.81 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2221,7 +2261,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 130.81 134.62 0)
+			(at 130.81 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2230,7 +2270,16 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
-			(at 130.81 134.62 0)
+			(at 130.81 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" " C23231"
+			(at 130.81 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2247,7 +2296,7 @@
 		(instances
 			(project "Remote_Weather_Station"
 				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
-					(reference "R203")
+					(reference "R205")
 					(unit 1)
 				)
 			)
@@ -2334,16 +2383,16 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 130.81 90.17 0)
+		(at 233.68 100.33 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "022a2077-c0d4-486e-bec2-61fd684d31a8")
+		(uuid "0405766a-23b0-4f6f-aa5f-091550804b69")
 		(property "Reference" "#PWR?"
-			(at 130.81 96.52 0)
+			(at 233.68 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2352,15 +2401,16 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 130.81 95.25 0)
+			(at 233.68 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
-			(at 130.81 90.17 0)
+			(at 233.68 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2369,7 +2419,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 130.81 90.17 0)
+			(at 233.68 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2378,7 +2428,16 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 130.81 90.17 0)
+			(at 233.68 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
+			(at 233.68 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2387,7 +2446,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "f7d2c28b-f063-4b16-abbd-1e0e137006b8")
+			(uuid "154a5387-f2a9-4b6d-817a-9aee8e3b1ba0")
 		)
 		(instances
 			(project "Remote_Weather_Station"
@@ -2399,17 +2458,35 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 233.68 124.46 0)
+		(lib_id "Device:R_Small_US")
+		(at 130.81 138.43 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "140ad5b0-404a-4752-aecd-b68b25e552a0")
-		(property "Reference" "#PWR?"
-			(at 233.68 130.81 0)
+		(uuid "0f868dc2-86ac-439e-9913-e5a06477a6cd")
+		(property "Reference" "R207"
+			(at 133.35 137.1599 0)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "3.6k"
+			(at 133.35 139.6999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 130.81 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2417,16 +2494,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND"
-			(at 233.68 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 233.68 124.46 0)
+		(property "Datasheet" "~"
+			(at 130.81 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2434,8 +2503,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
-			(at 233.68 124.46 0)
+		(property "Description" "Resistor, small US symbol"
+			(at 130.81 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2443,220 +2512,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 233.68 124.46 0)
+		(property "JLCPCB#" " C22980"
+			(at 130.81 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
+		)
+		(pin "2"
+			(uuid "0b281763-a518-43d5-afae-83451975ffdf")
 		)
 		(pin "1"
-			(uuid "3f3d03e3-c9ce-4025-895f-2e108cb71f17")
+			(uuid "5d08bb32-ef54-4669-b1e7-476d41ddc914")
 		)
 		(instances
 			(project "Remote_Weather_Station"
 				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
-					(reference "#PWR?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 204.47 125.73 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1859cc70-9fc3-43ce-8b13-21697054462e")
-		(property "Reference" "#PWR?"
-			(at 204.47 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 204.47 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 204.47 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 204.47 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 204.47 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "390b2c7e-b332-4dd8-beb9-f752d5dabd66")
-		)
-		(instances
-			(project "Remote_Weather_Station"
-				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
-					(reference "#PWR?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 130.81 158.75 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "2270547f-6e26-4b88-a2b0-948ec7178ef9")
-		(property "Reference" "#PWR?"
-			(at 130.81 165.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 130.81 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 130.81 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 130.81 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 130.81 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e92e9b06-bc5a-436b-8f67-dbe8e4e9d002")
-		)
-		(instances
-			(project "Remote_Weather_Station"
-				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
-					(reference "#PWR?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 39.37 135.89 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "25bbb442-6536-427d-90f1-7002577901a8")
-		(property "Reference" "#PWR?"
-			(at 39.37 142.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 39.37 140.97 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 39.37 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 39.37 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 39.37 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "805e5600-c19c-4858-9702-e7d253b56633")
-		)
-		(instances
-			(project "Remote_Weather_Station"
-				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
-					(reference "#PWR?")
+					(reference "R207")
 					(unit 1)
 				)
 			)
@@ -2763,7 +2637,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "30a898ad-4146-41f7-9aa9-c051fede0c9a")
-		(property "Reference" "R204"
+		(property "Reference" "R206"
 			(at 133.35 149.8599 0)
 			(effects
 				(font
@@ -2781,7 +2655,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 130.81 151.13 0)
 			(effects
 				(font
@@ -2808,6 +2682,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB#" "C25804"
+			(at 130.81 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e47dbed3-43e7-4af7-a165-593e8fd0115b")
 		)
@@ -2817,7 +2700,159 @@
 		(instances
 			(project "Remote_Weather_Station"
 				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
-					(reference "R204")
+					(reference "R206")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 50.8 68.58 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3461c335-037c-4568-b916-02420982f3cf")
+		(property "Reference" "#PWR?"
+			(at 50.8 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 50.8 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 50.8 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 50.8 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
+			(at 50.8 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "34ee5c63-1c8b-44f3-9d78-7b62ed10c9ae")
+		)
+		(instances
+			(project "Remote_Weather_Station"
+				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 223.52 124.46 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "403e258c-7253-4176-a21d-346b543bda8a")
+		(property "Reference" "#PWR?"
+			(at 223.52 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 223.52 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 223.52 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 223.52 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 223.52 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
+			(at 223.52 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "18f94d8e-2f51-4922-88f5-6d2614548b52")
+		)
+		(instances
+			(project "Remote_Weather_Station"
+				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
+					(reference "#PWR?")
 					(unit 1)
 				)
 			)
@@ -2904,16 +2939,16 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 107.95 158.75 0)
+		(at 39.37 68.58 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "563748c0-a8c9-4eb4-8bdc-24b7eeae21a5")
+		(uuid "61e9eed3-c2e7-47ab-b68a-b3ed6df89c36")
 		(property "Reference" "#PWR?"
-			(at 107.95 165.1 0)
+			(at 39.37 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2922,15 +2957,16 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 107.95 163.83 0)
+			(at 39.37 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
-			(at 107.95 158.75 0)
+			(at 39.37 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2939,7 +2975,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 107.95 158.75 0)
+			(at 39.37 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2948,7 +2984,16 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 107.95 158.75 0)
+			(at 39.37 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
+			(at 39.37 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2957,7 +3002,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "1dbefb79-58fa-423f-9a15-279763a7d956")
+			(uuid "82edeeca-fa1b-4b73-9e43-e53a69688bee")
 		)
 		(instances
 			(project "Remote_Weather_Station"
@@ -2970,16 +3015,16 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 107.95 90.17 0)
+		(at 204.47 125.73 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "5788dc70-8d7a-40e5-89e6-104edf813fdd")
+		(uuid "6357ba02-51b5-4c99-8c15-9f323ecd53dc")
 		(property "Reference" "#PWR?"
-			(at 107.95 96.52 0)
+			(at 204.47 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2988,15 +3033,16 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 107.95 95.25 0)
+			(at 204.47 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
-			(at 107.95 90.17 0)
+			(at 204.47 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3005,7 +3051,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 107.95 90.17 0)
+			(at 204.47 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3014,7 +3060,16 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 107.95 90.17 0)
+			(at 204.47 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
+			(at 204.47 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3023,7 +3078,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "999b9d66-5216-44b7-8d2b-31b569db56f9")
+			(uuid "2a5cf654-9b8d-4407-92da-35686cd82e8a")
 		)
 		(instances
 			(project "Remote_Weather_Station"
@@ -3127,16 +3182,16 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 204.47 90.17 0)
+		(at 39.37 135.89 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "7d0d981e-5729-49b6-ab39-baa9177f1601")
+		(uuid "6658cf62-6594-4696-82b6-a9e04cd33771")
 		(property "Reference" "#PWR?"
-			(at 204.47 96.52 0)
+			(at 39.37 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3145,15 +3200,16 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 204.47 95.25 0)
+			(at 39.37 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
-			(at 204.47 90.17 0)
+			(at 39.37 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3162,7 +3218,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 204.47 90.17 0)
+			(at 39.37 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3171,7 +3227,16 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 204.47 90.17 0)
+			(at 39.37 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
+			(at 39.37 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3180,7 +3245,235 @@
 			)
 		)
 		(pin "1"
-			(uuid "d3676afe-36d9-4e45-aef1-7440b3fd3b24")
+			(uuid "c52333c3-2b10-4467-b17b-f61222325c7e")
+		)
+		(instances
+			(project "Remote_Weather_Station"
+				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 130.81 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6b4c1d28-c94b-48b3-9d3e-ad0e0ca8f67b")
+		(property "Reference" "#PWR?"
+			(at 130.81 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 130.81 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 130.81 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 130.81 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 130.81 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
+			(at 130.81 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "39ba7363-0171-4bad-a319-b710a00cc435")
+		)
+		(instances
+			(project "Remote_Weather_Station"
+				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 107.95 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6ceed719-1483-4f18-8546-ab838c4c5455")
+		(property "Reference" "#PWR?"
+			(at 107.95 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 107.95 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 107.95 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 107.95 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 107.95 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
+			(at 107.95 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "468c75a1-374e-46d9-8f00-2c960dd6949a")
+		)
+		(instances
+			(project "Remote_Weather_Station"
+				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 50.8 135.89 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "740a4a11-d7b6-46a7-a19c-7ea6f84a4422")
+		(property "Reference" "#PWR?"
+			(at 50.8 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 50.8 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 50.8 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 50.8 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
+			(at 50.8 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "071b5a8b-3723-4295-966e-b5722080a7e9")
 		)
 		(instances
 			(project "Remote_Weather_Station"
@@ -3352,16 +3645,16 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 143.51 158.75 0)
+		(at 107.95 158.75 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "88c950d4-d35c-44af-9c7d-c184a70df37e")
+		(uuid "8a30baad-0b14-40b2-818b-15f732f9bb11")
 		(property "Reference" "#PWR?"
-			(at 143.51 165.1 0)
+			(at 107.95 165.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3370,15 +3663,16 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 143.51 163.83 0)
+			(at 107.95 163.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
-			(at 143.51 158.75 0)
+			(at 107.95 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3387,7 +3681,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 143.51 158.75 0)
+			(at 107.95 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3396,7 +3690,16 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 143.51 158.75 0)
+			(at 107.95 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
+			(at 107.95 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3405,7 +3708,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "1053e4a9-2423-444c-85ec-17edb11c2e5a")
+			(uuid "2e811c7c-5aba-454e-ac2e-771956c6a537")
 		)
 		(instances
 			(project "Remote_Weather_Station"
@@ -3417,17 +3720,35 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 233.68 91.44 0)
+		(lib_id "Device:R_Small_US")
+		(at 233.68 129.54 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "8b545209-12b8-4048-9230-028d1bf45315")
-		(property "Reference" "#PWR?"
-			(at 233.68 97.79 0)
+		(uuid "8b64fdf0-26b6-4481-b020-5a7b5427ed37")
+		(property "Reference" "R204"
+			(at 236.22 128.2699 0)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0"
+			(at 236.22 130.8099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 233.68 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3435,16 +3756,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND"
-			(at 233.68 96.52 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 233.68 91.44 0)
+		(property "Datasheet" "~"
+			(at 233.68 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3452,8 +3765,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
-			(at 233.68 91.44 0)
+		(property "Description" "Resistor, small US symbol"
+			(at 233.68 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3461,22 +3774,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 233.68 91.44 0)
+		(property "JLCPCB#" " C21189"
+			(at 233.68 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
+		)
+		(pin "2"
+			(uuid "39de731e-671b-4f08-84a3-96f9b82f9961")
 		)
 		(pin "1"
-			(uuid "1d6c70bd-53d5-4e6c-bd1a-aaf7d310eb7e")
+			(uuid "91f83a70-4371-401a-b106-e03bd66611be")
 		)
 		(instances
 			(project "Remote_Weather_Station"
 				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
-					(reference "#PWR?")
+					(reference "R204")
 					(unit 1)
 				)
 			)
@@ -3510,7 +3826,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 130.81 66.04 0)
 			(effects
 				(font
@@ -3537,7 +3853,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB#" ""
+		(property "JLCPCB#" "C23184"
 			(at 130.81 66.04 0)
 			(effects
 				(font
@@ -3717,17 +4033,35 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 143.51 90.17 0)
+		(lib_id "Device:R_Small_US")
+		(at 233.68 95.25 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "9b5a22e9-3cd5-4e25-ab5d-d8c26d0b99e8")
-		(property "Reference" "#PWR?"
-			(at 143.51 96.52 0)
+		(uuid "99253fff-63ed-492e-8ddf-a13f075f174c")
+		(property "Reference" "R203"
+			(at 236.22 93.9799 0)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0"
+			(at 236.22 96.5199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 233.68 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3735,16 +4069,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND"
-			(at 143.51 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 143.51 90.17 0)
+		(property "Datasheet" "~"
+			(at 233.68 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3752,8 +4078,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
-			(at 143.51 90.17 0)
+		(property "Description" "Resistor, small US symbol"
+			(at 233.68 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3761,22 +4087,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 143.51 90.17 0)
+		(property "JLCPCB#" " C21189"
+			(at 233.68 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
+		)
+		(pin "2"
+			(uuid "0722cf54-03fd-4e65-8845-dca2932b1cc2")
 		)
 		(pin "1"
-			(uuid "5b463db6-7acf-4acd-95ec-ec09dc479a2f")
+			(uuid "15099da3-32c6-4466-8a7b-979fd05445aa")
 		)
 		(instances
 			(project "Remote_Weather_Station"
 				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
-					(reference "#PWR?")
+					(reference "R203")
 					(unit 1)
 				)
 			)
@@ -3863,6 +4192,158 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 204.47 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a7ab78e8-6b07-4c98-8cba-3f9f7fef6e19")
+		(property "Reference" "#PWR?"
+			(at 204.47 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 204.47 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 204.47 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 204.47 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 204.47 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
+			(at 204.47 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "39822196-3534-49fd-9ae9-bd6e81a4ec73")
+		)
+		(instances
+			(project "Remote_Weather_Station"
+				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 143.51 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "adc10eb4-ad03-493f-b540-62fd3addf795")
+		(property "Reference" "#PWR?"
+			(at 143.51 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 143.51 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 143.51 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 143.51 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 143.51 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
+			(at 143.51 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ded835d4-9ae2-4c5d-b3aa-36281622df8c")
+		)
+		(instances
+			(project "Remote_Weather_Station"
+				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 223.52 91.44 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3886,6 +4367,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -3907,6 +4389,15 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 223.52 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
 			(at 223.52 91.44 0)
 			(effects
 				(font
@@ -3917,72 +4408,6 @@
 		)
 		(pin "1"
 			(uuid "f6f73fc3-3f80-4f57-9da6-920fb5674cd6")
-		)
-		(instances
-			(project "Remote_Weather_Station"
-				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
-					(reference "#PWR?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 223.52 124.46 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b01bce40-7ca1-4190-82d9-d18e72adaf9b")
-		(property "Reference" "#PWR?"
-			(at 223.52 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 223.52 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 223.52 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 223.52 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 223.52 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ba8d770b-68d2-4109-8353-c14e40ffbe48")
 		)
 		(instances
 			(project "Remote_Weather_Station"
@@ -4019,7 +4444,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_Vishay_IFSC-1515AH_4x4x1.8mm"
 			(at 124.46 57.15 0)
 			(effects
 				(font
@@ -4038,6 +4463,15 @@
 			)
 		)
 		(property "Description" "Inductor, small symbol"
+			(at 124.46 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" "C520315"
 			(at 124.46 57.15 0)
 			(effects
 				(font
@@ -4089,7 +4523,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 130.81 82.55 0)
 			(effects
 				(font
@@ -4116,6 +4550,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB#" "C25804"
+			(at 130.81 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "0490a28d-3188-4245-96bf-4458c593dbc9")
 		)
@@ -4126,138 +4569,6 @@
 			(project "Remote_Weather_Station"
 				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
 					(reference "R202")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 50.8 135.89 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b79054ff-83aa-4ade-b17a-f7d88330753f")
-		(property "Reference" "#PWR?"
-			(at 50.8 142.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 50.8 140.97 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 50.8 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 50.8 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 50.8 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "76a58189-df58-4087-b113-fb835e58faa7")
-		)
-		(instances
-			(project "Remote_Weather_Station"
-				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
-					(reference "#PWR?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 39.37 68.58 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b969c563-05d3-49d9-a1a2-2b640cd26c30")
-		(property "Reference" "#PWR?"
-			(at 39.37 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 39.37 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 39.37 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 39.37 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 39.37 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0179e4f7-e674-460e-86c0-5312bb026f7e")
-		)
-		(instances
-			(project "Remote_Weather_Station"
-				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
-					(reference "#PWR?")
 					(unit 1)
 				)
 			)
@@ -4289,7 +4600,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_Vishay_IFSC-1515AH_4x4x1.8mm"
 			(at 124.46 125.73 0)
 			(effects
 				(font
@@ -4316,6 +4627,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB#" "C520315"
+			(at 124.46 125.73 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "d7b0526d-b5fc-47fc-9707-bd3fd688d1f0")
 		)
@@ -4326,6 +4646,82 @@
 			(project "Remote_Weather_Station"
 				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
 					(reference "L202")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 143.51 158.75 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "bacbb854-a5a8-4a68-9f25-45079e7cc6da")
+		(property "Reference" "#PWR?"
+			(at 143.51 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 143.51 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 143.51 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 143.51 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 143.51 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
+			(at 143.51 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b918c2e2-ab96-409e-acfb-2a3296fa30be")
+		)
+		(instances
+			(project "Remote_Weather_Station"
+				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
+					(reference "#PWR?")
 					(unit 1)
 				)
 			)
@@ -4560,6 +4956,82 @@
 			(project "Remote_Weather_Station"
 				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
 					(reference "C209")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 233.68 134.62 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d7616f48-b612-4b0e-a582-13e098703297")
+		(property "Reference" "#PWR?"
+			(at 233.68 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 233.68 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 233.68 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 233.68 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 233.68 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
+			(at 233.68 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e0bebac7-0040-4d24-91a1-047f2406a93c")
+		)
+		(instances
+			(project "Remote_Weather_Station"
+				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
+					(reference "#PWR?")
 					(unit 1)
 				)
 			)
@@ -4804,6 +5276,82 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 130.81 158.75 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f7bae8f6-00a2-48ef-9f69-5d4d3b84bb5f")
+		(property "Reference" "#PWR?"
+			(at 130.81 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 130.81 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 130.81 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 130.81 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 130.81 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
+			(at 130.81 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0d1ab8f8-af4f-429b-bf83-760aacd39c13")
+		)
+		(instances
+			(project "Remote_Weather_Station"
+				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 143.51 143.51 0)
 		(unit 1)
@@ -4877,72 +5425,6 @@
 			(project "Remote_Weather_Station"
 				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
 					(reference "C212")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 50.8 68.58 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "fcffc65d-407e-411d-bada-239bf279c0d5")
-		(property "Reference" "#PWR?"
-			(at 50.8 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 50.8 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 50.8 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 50.8 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 50.8 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "659a2f71-70df-44ee-9dec-c9da91104af7")
-		)
-		(instances
-			(project "Remote_Weather_Station"
-				(path "/a9f3e948-f0cb-4784-bed2-bdf72b5832ff/c5ce83d8-19ce-4b8a-bc17-1062d95f8aa0"
-					(reference "#PWR?")
 					(unit 1)
 				)
 			)
