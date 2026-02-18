@@ -7779,7 +7779,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+		(property "Footprint" "MountingHole:MountingHole_2.7mm_M2.5"
 			(at 17.78 129.54 0)
 			(effects
 				(font
@@ -7843,7 +7843,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Terminal_Blocks:DBT50G-7.62-4P-BK-P"
 			(at 172.72 119.38 0)
 			(effects
 				(font
@@ -7927,7 +7927,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+		(property "Footprint" "MountingHole:MountingHole_2.7mm_M2.5"
 			(at 17.78 116.84 0)
 			(effects
 				(font
@@ -7989,7 +7989,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_SH_BM04B-SRSS-TB_1x04-1MP_P1.00mm_Vertical"
 			(at 151.13 64.77 0)
 			(effects
 				(font
@@ -8502,7 +8502,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Terminal_Blocks:WJ250B-3.5-12P-11-00A"
 			(at 264.795 78.74 0)
 			(effects
 				(font
@@ -10570,7 +10570,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+		(property "Footprint" "MountingHole:MountingHole_2.7mm_M2.5"
 			(at 17.78 110.49 0)
 			(effects
 				(font
@@ -10589,6 +10589,15 @@
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
+			(at 17.78 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
 			(at 17.78 110.49 0)
 			(effects
 				(font
@@ -12080,7 +12089,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPCB#" ""
+		(property "JLCPCB#" "C23253"
 			(at 25.4 168.91 0)
 			(effects
 				(font
@@ -13202,7 +13211,7 @@
 				)
 			)
 		)
-		(property "Footprint" "button:TS-1088-AR02016"
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_TS-1088-xR020"
 			(at 106.68 105.41 0)
 			(effects
 				(font
@@ -14432,7 +14441,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Modem_Footprint:SIM7600X"
 			(at 228.6 157.48 0)
 			(effects
 				(font
@@ -14451,6 +14460,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 228.6 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB#" ""
 			(at 228.6 157.48 0)
 			(effects
 				(font
@@ -14718,7 +14736,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical"
 			(at 143.51 31.75 0)
 			(effects
 				(font
@@ -15018,7 +15036,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 			(at 158.75 90.17 0)
 			(effects
 				(font
@@ -15300,7 +15318,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+		(property "Footprint" "MountingHole:MountingHole_2.7mm_M2.5"
 			(at 17.78 123.19 0)
 			(effects
 				(font
@@ -16024,7 +16042,7 @@
 				)
 			)
 		)
-		(property "Footprint" "button:TS-1088-AR02016"
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_TS-1088-xR020"
 			(at 25.4 48.26 0)
 			(effects
 				(font

@@ -1,4 +1,4 @@
-26439429198491610
+26446514683309970
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -69159,6 +69159,13 @@ Yellow 5381 Series LED
 0
 2
 2
+Modem_Footprint
+SIM7600X
+
+
+0
+26
+26
 Module
 A20_OLINUXINO_LIME2
 A20 Olinuxino LIME2, 1.2GHz, 512-1024MB RAM, Micro-SD, NAND or eMMC, 1000Mbit Ethernet
@@ -96704,6 +96711,13 @@ https://www.farnell.com/cad/316865.pdf?_ga=2.37208032.177107060.1530611323-24901
 0
 48
 48
+Stemma_QT
+Untitled
+
+
+0
+0
+0
 Symbol
 CE-Logo_8.5x6mm_SilkScreen
 CE marking
@@ -103067,6 +103081,20 @@ screw terminal thread redcube thr power connector
 0
 18
 1
+Terminal_Blocks
+DBT50G-7.62-4P-BK-P
+
+
+0
+4
+4
+Terminal_Blocks
+WJ250B-3.5-12P-11-00A
+
+
+0
+24
+12
 TestPoint
 TestPoint_2Pads_Pitch2.54mm_Drill0.8mm
 Test point with 2 pins, pitch 2.54mm, drill diameter 0.8mm
