@@ -4363,7 +4363,7 @@
 		(uuid "5b609210-2e84-479a-b89b-979363f10a65")
 	)
 	(junction
-		(at 207.01 80.01)
+		(at 218.44 80.01)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "5e6ba612-b0b3-41da-85e9-f6870e166a25")
@@ -5006,7 +5006,7 @@
 	)
 	(wire
 		(pts
-			(xy 207.01 80.01) (xy 203.2 80.01)
+			(xy 218.44 80.01) (xy 214.63 80.01)
 		)
 		(stroke
 			(width 0)
@@ -5226,7 +5226,7 @@
 	)
 	(wire
 		(pts
-			(xy 207.01 77.47) (xy 207.01 80.01)
+			(xy 218.44 77.47) (xy 218.44 80.01)
 		)
 		(stroke
 			(width 0)
@@ -5543,6 +5543,16 @@
 			(type default)
 		)
 		(uuid "6aa30113-8c10-4fcc-9b78-eb9c5342a67e")
+	)
+	(wire
+		(pts
+			(xy 243.84 152.4) (xy 247.65 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ff15513-9ba1-4bcd-bff1-4f57ce030a88")
 	)
 	(wire
 		(pts
@@ -5866,7 +5876,7 @@
 	)
 	(wire
 		(pts
-			(xy 207.01 80.01) (xy 207.01 83.82)
+			(xy 218.44 80.01) (xy 218.44 83.82)
 		)
 		(stroke
 			(width 0)
@@ -5903,6 +5913,16 @@
 			(type default)
 		)
 		(uuid "9ccc7fd3-4c98-4c36-abf9-2531bdfaa507")
+	)
+	(wire
+		(pts
+			(xy 80.01 99.06) (xy 82.55 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9e427ebb-5d0d-4563-b864-518f9c20a4cb")
 	)
 	(wire
 		(pts
@@ -5946,7 +5966,7 @@
 	)
 	(wire
 		(pts
-			(xy 207.01 88.9) (xy 207.01 91.44)
+			(xy 218.44 88.9) (xy 218.44 91.44)
 		)
 		(stroke
 			(width 0)
@@ -6006,7 +6026,7 @@
 	)
 	(wire
 		(pts
-			(xy 207.01 96.52) (xy 207.01 99.06)
+			(xy 218.44 96.52) (xy 218.44 99.06)
 		)
 		(stroke
 			(width 0)
@@ -6266,7 +6286,7 @@
 	)
 	(wire
 		(pts
-			(xy 207.01 69.85) (xy 207.01 72.39)
+			(xy 218.44 69.85) (xy 218.44 72.39)
 		)
 		(stroke
 			(width 0)
@@ -6426,6 +6446,16 @@
 	)
 	(wire
 		(pts
+			(xy 80.01 96.52) (xy 82.55 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf994574-a40a-4592-806e-8796409241ce")
+	)
+	(wire
+		(pts
 			(xy 264.16 30.48) (xy 266.7 30.48)
 		)
 		(stroke
@@ -6473,6 +6503,16 @@
 			(type default)
 		)
 		(uuid "d25709b2-4c50-4d28-aeb8-c5ded709badb")
+	)
+	(wire
+		(pts
+			(xy 243.84 154.94) (xy 247.65 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3fff7ee-1475-418d-a1ad-5cd5ccba7aea")
 	)
 	(wire
 		(pts
@@ -6816,7 +6856,7 @@
 	)
 	(wire
 		(pts
-			(xy 207.01 62.23) (xy 207.01 64.77)
+			(xy 218.44 62.23) (xy 218.44 64.77)
 		)
 		(stroke
 			(width 0)
@@ -7034,6 +7074,28 @@
 		)
 		(uuid "e6b4ab51-ea72-4a4e-b209-aef8eaee7b56")
 	)
+	(global_label "modem_rx"
+		(shape input)
+		(at 82.55 99.06 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "034b1bae-d330-41ad-9c2e-00b6bb3dde54")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 95.0903 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "Rain_Value"
 		(shape output)
 		(at 57.15 168.91 0)
@@ -7168,7 +7230,7 @@
 	)
 	(global_label "Base_Ref"
 		(shape input)
-		(at 203.2 80.01 180)
+		(at 214.63 80.01 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7178,7 +7240,7 @@
 		)
 		(uuid "22586b8f-024f-465e-a72f-1cef003ab7a2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 191.6272 80.01 0)
+			(at 203.0572 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7518,6 +7580,28 @@
 			)
 		)
 	)
+	(global_label "modem_tx"
+		(shape input)
+		(at 82.55 96.52 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "aa13ae7f-2958-47ec-8974-68b530def7be")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 95.0298 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "East_West_Ref"
 		(shape input)
 		(at 149.86 173.99 180)
@@ -7553,6 +7637,28 @@
 		(uuid "bd355776-7279-4208-8c15-0684d2c642a1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 95.2112 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "modem_rx"
+		(shape input)
+		(at 247.65 154.94 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c751c02d-64ae-4858-9398-7127b86c3ca1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 260.1903 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7751,6 +7857,28 @@
 		(uuid "f3399581-1d56-4fb8-8974-a82cbd49959b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.5947 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "modem_tx"
+		(shape input)
+		(at 247.65 152.4 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f79b366c-ae46-4b5c-ad75-17b7f5246d25")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 260.1298 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8833,7 +8961,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 207.01 67.31 0)
+		(at 218.44 67.31 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8843,7 +8971,7 @@
 		(fields_autoplaced yes)
 		(uuid "173c97f8-ffa7-420c-8bb7-9747d666e0ce")
 		(property "Reference" "R105"
-			(at 204.47 66.0399 0)
+			(at 215.9 66.0399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8852,7 +8980,7 @@
 			)
 		)
 		(property "Value" "20"
-			(at 204.47 68.5799 0)
+			(at 215.9 68.5799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8861,7 +8989,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
-			(at 207.01 67.31 0)
+			(at 218.44 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8870,7 +8998,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 207.01 67.31 0)
+			(at 218.44 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8879,7 +9007,7 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
-			(at 207.01 67.31 0)
+			(at 218.44 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8888,7 +9016,7 @@
 			)
 		)
 		(property "JLCPCB#" "C22950"
-			(at 207.01 67.31 0)
+			(at 218.44 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10124,7 +10252,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 207.01 74.93 0)
+		(at 218.44 74.93 0)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10134,7 +10262,7 @@
 		(fields_autoplaced yes)
 		(uuid "3af9532a-3be8-448c-9044-3c94b9ec2697")
 		(property "Reference" "R106"
-			(at 204.47 73.6599 0)
+			(at 215.9 73.6599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10143,7 +10271,7 @@
 			)
 		)
 		(property "Value" "330"
-			(at 204.47 76.1999 0)
+			(at 215.9 76.1999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10152,7 +10280,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
-			(at 207.01 74.93 0)
+			(at 218.44 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10161,7 +10289,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 207.01 74.93 0)
+			(at 218.44 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10170,7 +10298,7 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
-			(at 207.01 74.93 0)
+			(at 218.44 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10179,7 +10307,7 @@
 			)
 		)
 		(property "JLCPCB#" " C23138"
-			(at 207.01 74.93 0)
+			(at 218.44 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13747,7 +13875,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 207.01 62.23 0)
+		(at 218.44 62.23 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13757,7 +13885,7 @@
 		(fields_autoplaced yes)
 		(uuid "92d1a6d3-8044-455f-ad96-ecdc7798f367")
 		(property "Reference" "#PWR0120"
-			(at 207.01 66.04 0)
+			(at 218.44 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13766,7 +13894,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 207.01 57.15 0)
+			(at 218.44 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13774,7 +13902,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 207.01 62.23 0)
+			(at 218.44 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13783,7 +13911,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 207.01 62.23 0)
+			(at 218.44 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13792,7 +13920,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 207.01 62.23 0)
+			(at 218.44 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15012,7 +15140,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 207.01 93.98 0)
+		(at 218.44 93.98 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15022,7 +15150,7 @@
 		(fields_autoplaced yes)
 		(uuid "a9a7c9b6-fa31-4d29-949d-ed35bdce06ef")
 		(property "Reference" "R110"
-			(at 204.47 92.7099 0)
+			(at 215.9 92.7099 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15031,7 +15159,7 @@
 			)
 		)
 		(property "Value" "330"
-			(at 204.47 95.2499 0)
+			(at 215.9 95.2499 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15040,7 +15168,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
-			(at 207.01 93.98 0)
+			(at 218.44 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15049,7 +15177,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 207.01 93.98 0)
+			(at 218.44 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15058,7 +15186,7 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
-			(at 207.01 93.98 0)
+			(at 218.44 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15067,7 +15195,7 @@
 			)
 		)
 		(property "JLCPCB#" " C23138"
-			(at 207.01 93.98 0)
+			(at 218.44 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15592,7 +15720,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 207.01 99.06 0)
+		(at 218.44 99.06 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15602,7 +15730,7 @@
 		(fields_autoplaced yes)
 		(uuid "b943b09b-dc10-4bce-8bfc-c8e100c631d5")
 		(property "Reference" "#PWR0132"
-			(at 207.01 105.41 0)
+			(at 218.44 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15611,7 +15739,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 207.01 104.14 0)
+			(at 218.44 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15620,7 +15748,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 207.01 99.06 0)
+			(at 218.44 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15629,7 +15757,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 207.01 99.06 0)
+			(at 218.44 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15638,7 +15766,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 207.01 99.06 0)
+			(at 218.44 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15647,7 +15775,7 @@
 			)
 		)
 		(property "JLCPCB#" ""
-			(at 207.01 99.06 0)
+			(at 218.44 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15735,7 +15863,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 207.01 86.36 0)
+		(at 218.44 86.36 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15745,7 +15873,7 @@
 		(fields_autoplaced yes)
 		(uuid "c340455b-8f39-437b-8319-43797200521b")
 		(property "Reference" "R109"
-			(at 204.47 85.0899 0)
+			(at 215.9 85.0899 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15754,7 +15882,7 @@
 			)
 		)
 		(property "Value" "20"
-			(at 204.47 87.6299 0)
+			(at 215.9 87.6299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15763,7 +15891,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
-			(at 207.01 86.36 0)
+			(at 218.44 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15772,7 +15900,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 207.01 86.36 0)
+			(at 218.44 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15781,7 +15909,7 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
-			(at 207.01 86.36 0)
+			(at 218.44 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15790,7 +15918,7 @@
 			)
 		)
 		(property "JLCPCB#" "C22950"
-			(at 207.01 86.36 0)
+			(at 218.44 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
