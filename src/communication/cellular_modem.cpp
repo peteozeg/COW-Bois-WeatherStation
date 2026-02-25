@@ -1,6 +1,6 @@
 /**
  * COW-Bois Weather Station - Cellular Modem Implementation
- * SIM7600 4G LTE modem interface
+ * SIM7600X 4G Module Breakout interface
  */
 
 #include "communication/cellular_modem.h"
@@ -10,27 +10,35 @@ CellularModem::CellularModem()
     : _modemSerial(nullptr)
     , _initialized(false)
     , _connected(false)
-    , _signalQuality(0) {
+    , _signalQuality(0)
+    , _pwrkeyPin(255)
+    , _resetPin(255)
+    , _powerEnablePin(255) {
     memset(_imei, 0, sizeof(_imei));
     memset(_operatorName, 0, sizeof(_operatorName));
 }
 
 bool CellularModem::begin(HardwareSerial& serial, uint8_t rxPin, uint8_t txPin,
-                          uint8_t powerPin, uint8_t resetPin) {
-    DEBUG_PRINTLN("Modem: Initializing SIM7600...");
+                          uint8_t pwrkeyPin, uint8_t resetPin, uint8_t powerEnablePin) {
+    DEBUG_PRINTLN("Modem: Initializing SIM7600X...");
 
     _modemSerial = &serial;
-    _powerPin = powerPin;
+    _pwrkeyPin = pwrkeyPin;
     _resetPin = resetPin;
+    _powerEnablePin = powerEnablePin;
 
     // Configure control pins
-    if (_powerPin != 255) {
-        pinMode(_powerPin, OUTPUT);
-        digitalWrite(_powerPin, LOW);
+    if (_pwrkeyPin != 255) {
+        pinMode(_pwrkeyPin, OUTPUT);
+        digitalWrite(_pwrkeyPin, HIGH);  // PWRKEY idle state (active low)
     }
     if (_resetPin != 255) {
         pinMode(_resetPin, OUTPUT);
-        digitalWrite(_resetPin, HIGH);
+        digitalWrite(_resetPin, HIGH);   // Reset idle state (active low)
+    }
+    if (_powerEnablePin != 255) {
+        pinMode(_powerEnablePin, OUTPUT);
+        digitalWrite(_powerEnablePin, LOW);
     }
 
     // Start serial communication
@@ -75,23 +83,39 @@ bool CellularModem::begin(HardwareSerial& serial, uint8_t rxPin, uint8_t txPin,
 void CellularModem::powerOn() {
     DEBUG_PRINTLN("Modem: Powering on...");
 
-    if (_powerPin != 255) {
-        digitalWrite(_powerPin, HIGH);
+    // Enable power supply if using power enable pin
+    if (_powerEnablePin != 255) {
+        digitalWrite(_powerEnablePin, HIGH);
+        delay(100);
+    }
+
+    // Pulse PWRKEY low for 1 second to turn on modem
+    // SIM7600 PWRKEY is active-low
+    if (_pwrkeyPin != 255) {
+        digitalWrite(_pwrkeyPin, LOW);
         delay(1000);
-        digitalWrite(_powerPin, LOW);
-        delay(2000);
+        digitalWrite(_pwrkeyPin, HIGH);
+        delay(2000);  // Wait for modem to boot
     }
 }
 
 void CellularModem::powerOff() {
     DEBUG_PRINTLN("Modem: Powering off...");
 
+    // Try graceful shutdown via AT command first
     sendATCommand("AT+CPOF", "OK", 5000);
 
-    if (_powerPin != 255) {
-        digitalWrite(_powerPin, HIGH);
-        delay(3000);
-        digitalWrite(_powerPin, LOW);
+    // Pulse PWRKEY low to turn off modem (same as power on - it's a toggle)
+    if (_pwrkeyPin != 255) {
+        digitalWrite(_pwrkeyPin, LOW);
+        delay(1500);  // Hold longer for power off
+        digitalWrite(_pwrkeyPin, HIGH);
+        delay(2000);
+    }
+
+    // Cut power supply if using power enable pin
+    if (_powerEnablePin != 255) {
+        digitalWrite(_powerEnablePin, LOW);
     }
 
     _connected = false;

@@ -42,15 +42,15 @@
 #define STATION_MODE_PIN 25       // LOW = Main Station, HIGH = Microstation
 
 // ============================================
-// Cellular Modem (LILYGO T-SIM7600)
+// Cellular Modem (SIM7600X 4G Module Breakout)
 // ============================================
 #define MODEM_TX_PIN 27
 #define MODEM_RX_PIN 26
 #define MODEM_PWRKEY_PIN 4
 #define MODEM_RESET_PIN 5
-#define MODEM_POWER_PIN 23
-#define MODEM_DTR_PIN 32
-#define MODEM_RI_PIN 33
+#define MODEM_POWER_PIN 255       // Not used - breakout powered directly
+// #define MODEM_DTR_PIN 32       // Optional - uncomment if wired
+// #define MODEM_RI_PIN 33        // Optional - uncomment if wired
 
 // ============================================
 // Status LEDs (optional)

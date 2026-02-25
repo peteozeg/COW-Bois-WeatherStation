@@ -1,6 +1,6 @@
 /**
  * COW-Bois Weather Station - Cellular Modem
- * SIM7600 4G LTE modem interface for LILYGO T-SIM7600G-H
+ * SIM7600X 4G Module Breakout interface
  */
 
 #ifndef CELLULAR_MODEM_H
@@ -20,12 +20,13 @@ public:
      * @param serial HardwareSerial instance
      * @param rxPin RX pin
      * @param txPin TX pin
-     * @param powerPin Power control pin
+     * @param pwrkeyPin PWRKEY pin for power toggle (required for SIM7600X breakout)
      * @param resetPin Reset pin
+     * @param powerEnablePin Optional power enable pin (255 = not used, for breakout boards)
      * @return true if initialization successful
      */
     bool begin(HardwareSerial& serial, uint8_t rxPin, uint8_t txPin,
-               uint8_t powerPin = 255, uint8_t resetPin = 255);
+               uint8_t pwrkeyPin, uint8_t resetPin = 255, uint8_t powerEnablePin = 255);
 
     /**
      * Power on the modem
@@ -130,8 +131,9 @@ private:
     bool _connected;
     int _signalQuality;
 
-    uint8_t _powerPin;
+    uint8_t _pwrkeyPin;
     uint8_t _resetPin;
+    uint8_t _powerEnablePin;
 
     char _imei[20];
     char _operatorName[32];

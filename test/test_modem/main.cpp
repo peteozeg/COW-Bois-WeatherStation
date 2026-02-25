@@ -1,7 +1,7 @@
 /**
  * COW-Bois Weather Station - Cellular Modem Test
  *
- * Simple test sketch to verify SIM7600 modem communication.
+ * Simple test sketch to verify SIM7600X 4G Module Breakout communication.
  * Tests basic AT commands, SIM status, signal quality, and network registration.
  *
  * Upload: pio run -e test_modem -t upload
@@ -12,19 +12,19 @@
  *   MODEM_RX  -> GPIO 26
  *   PWRKEY    -> GPIO 4
  *   RESET     -> GPIO 5
- *   POWER     -> GPIO 23
+ *   POWER     -> Not used (breakout powered directly via VIN)
  */
 
 #include <Arduino.h>
 
 // Modem pins (from pin_definitions.h)
+// SIM7600X 4G Module Breakout
 #define MODEM_TX_PIN    27
 #define MODEM_RX_PIN    26
 #define MODEM_PWRKEY    4
 #define MODEM_RESET     5
-// Note: MODEM_POWER (GPIO 23) may not be connected on all boards
-// Set to 255 to disable if your board doesn't have a power enable pin
-#define MODEM_POWER     23   // Set to 255 if not used
+// SIM7600X breakout is powered directly - no GPIO power control
+#define MODEM_POWER     255  // Not used
 
 // Use HardwareSerial for modem communication
 HardwareSerial ModemSerial(1);  // UART1
@@ -107,10 +107,10 @@ void powerOnModem() {
     delay(100);
     #endif
 
-    // Pulse PWRKEY to turn on (hold for 1 second)
-    digitalWrite(MODEM_PWRKEY, HIGH);
-    delay(1000);
+    // Pulse PWRKEY LOW to turn on (SIM7600 PWRKEY is active-low)
     digitalWrite(MODEM_PWRKEY, LOW);
+    delay(1000);
+    digitalWrite(MODEM_PWRKEY, HIGH);
 
     Serial.println(F("Waiting for modem to boot (5 seconds)..."));
     delay(5000);
@@ -130,10 +130,10 @@ void resetModem() {
 void powerCycleModem() {
     Serial.println(F("Power cycling modem..."));
 
-    // Power off via PWRKEY (same as power on - it's a toggle)
-    digitalWrite(MODEM_PWRKEY, HIGH);
-    delay(1000);
+    // Power off via PWRKEY (pulse LOW - same as power on, it's a toggle)
     digitalWrite(MODEM_PWRKEY, LOW);
+    delay(1500);  // Hold longer for power off
+    digitalWrite(MODEM_PWRKEY, HIGH);
     delay(2000);
 
     // Also cut power supply if pin is configured
@@ -350,8 +350,8 @@ void setup() {
     pinMode(MODEM_POWER, OUTPUT);
     #endif
 
-    digitalWrite(MODEM_PWRKEY, LOW);
-    digitalWrite(MODEM_RESET, HIGH);
+    digitalWrite(MODEM_PWRKEY, HIGH);  // PWRKEY idle state (active-low)
+    digitalWrite(MODEM_RESET, HIGH);   // Reset idle state (active-low)
     #if MODEM_POWER != 255
     digitalWrite(MODEM_POWER, LOW);
     #endif

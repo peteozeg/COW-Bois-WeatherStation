@@ -166,7 +166,7 @@ void setup() {
         // Initialize cellular modem (main station only)
         Serial.println("Initializing cellular modem...");
         if (modem.begin(Serial1, MODEM_RX_PIN, MODEM_TX_PIN,
-                        MODEM_POWER_PIN, MODEM_RESET_PIN)) {
+                        MODEM_PWRKEY_PIN, MODEM_RESET_PIN, MODEM_POWER_PIN)) {
             Serial.println("Modem initialized");
 
             // Connect to network
