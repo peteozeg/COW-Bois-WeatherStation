@@ -120,7 +120,7 @@ uint32_t StationModeManager::getRecommendedTransmitInterval() const {
         case StationMode::MAIN_STATION:
             return TRANSMIT_INTERVAL_MS;  // 5 minutes
         case StationMode::MICROSTATION:
-            return ESPNOW_TRANSMIT_INTERVAL_MS;  // 30 seconds via ESP-NOW
+            return ESPNOW_TRANSMIT_INTERVAL_MS;  // 5 minutes via ESP-NOW
         case StationMode::STANDALONE:
             return 10000;  // 10 seconds for testing
         default:

@@ -18,7 +18,7 @@
 #define SAMPLE_INTERVAL_MS 3000        // Sample sensors every 3 seconds
 #define TRANSMIT_INTERVAL_MS 300000    // Transmit data every 5 minutes
 #define AGGREGATION_WINDOW_MS 300000   // Aggregation window (same as transmit)
-#define ESPNOW_TRANSMIT_INTERVAL_MS 30000  // Microstation transmit interval
+#define ESPNOW_TRANSMIT_INTERVAL_MS 300000 // Microstation transmit interval (5 min, matches main station)
 #define SENSOR_WARMUP_MS 2000          // Sensor warmup time after init
 #define WARMUP_TIME_MS 15000           // SGP30 warmup time
 #define MODEM_TIMEOUT_MS 30000         // Cellular modem timeout
