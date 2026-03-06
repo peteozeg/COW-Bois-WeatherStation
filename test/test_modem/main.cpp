@@ -1,33 +1,55 @@
 /**
  * COW-Bois Weather Station - Cellular Modem Test
  *
- * Simple test sketch to verify SIM7600X 4G Module Breakout communication.
+ * Simple test sketch to verify SIM7600X communication.
  * Tests basic AT commands, SIM status, signal quality, and network registration.
  *
  * Upload: pio run -e test_modem -t upload
  * Monitor: pio device monitor
  *
- * Wiring (from pin_definitions.h):
- *   MODEM_TX  -> GPIO 27
- *   MODEM_RX  -> GPIO 26
- *   PWRKEY    -> GPIO 4
- *   RESET     -> GPIO 5
- *   POWER     -> Not used (breakout powered directly via VIN)
+ * =====================================================
+ * BOARD SELECTION - Uncomment ONE of these:
+ * =====================================================
+ */
+#define BOARD_WAVESHARE   // Waveshare SIM7600X breakout on breadboard
+// #define BOARD_LILYGO   // LILYGO T-SIM7600E integrated board
+
+/**
+ * Wiring for Waveshare SIM7600X breakout:
+ *   ESP32 GPIO 26  <--  Modem TXD  (ESP receives from modem)
+ *   ESP32 GPIO 27  -->  Modem RXD  (ESP transmits to modem)
+ *   ESP32 GPIO 4   -->  Modem PWK  (power key)
+ *   ESP32 GPIO 5   -->  Modem RST  (reset)
+ *   ESP32 3.3V     -->  Modem VIO  (logic level - REQUIRED!)
+ *   ESP32 GND      ---  Modem GND  (common ground - REQUIRED!)
+ *   5V 3A Supply   -->  Modem VIN  (power input)
+ *
+ * LILYGO T-SIM7600E (integrated - no external wiring needed)
  */
 
 #include <Arduino.h>
 
-// Modem pins (from pin_definitions.h)
-// SIM7600X 4G Module Breakout
-#define MODEM_TX_PIN    27
-#define MODEM_RX_PIN    26
-#define MODEM_PWRKEY    4
-#define MODEM_RESET     5
-// SIM7600X breakout is powered directly - no GPIO power control
-#define MODEM_POWER     255  // Not used
+// =====================================================
+// Pin definitions based on board selection
+// =====================================================
+#ifdef BOARD_LILYGO
+  // LILYGO T-SIM7600E integrated board
+  #define MODEM_TX_PIN 26    // ESP TX -> Modem RX
+  #define MODEM_RX_PIN 27    // ESP RX <- Modem TX
+  #define MODEM_PWRKEY 4
+  #define MODEM_RESET 5
+  #define MODEM_POWER 25     // Must be HIGH to enable modem power
+#else
+  // Waveshare SIM7600X breakout (default)
+  #define MODEM_TX_PIN 27    // ESP TX -> Modem RXD
+  #define MODEM_RX_PIN 26    // ESP RX <- Modem TXD
+  #define MODEM_PWRKEY 4
+  #define MODEM_RESET 5
+  #define MODEM_POWER 255    // Not used - powered directly via VIN
+#endif
 
 // Use HardwareSerial for modem communication
-HardwareSerial ModemSerial(1);  // UART1
+HardwareSerial ModemSerial(1); // UART1
 
 // Buffer for responses
 char responseBuffer[512];
@@ -36,7 +58,8 @@ char responseBuffer[512];
 // Helper Functions
 // ============================================
 
-void printHelp() {
+void printHelp()
+{
     Serial.println();
     Serial.println(F("=== Modem Test Commands ==="));
     Serial.println(F("  a - Test AT communication"));
@@ -53,9 +76,11 @@ void printHelp() {
 }
 
 // Send AT command and wait for response
-bool sendATCommand(const char* command, const char* expected, unsigned long timeout = 2000) {
+bool sendATCommand(const char *command, const char *expected, unsigned long timeout = 2000)
+{
     // Clear any pending data
-    while (ModemSerial.available()) {
+    while (ModemSerial.available())
+    {
         ModemSerial.read();
     }
 
@@ -68,21 +93,26 @@ bool sendATCommand(const char* command, const char* expected, unsigned long time
     size_t index = 0;
     memset(responseBuffer, 0, sizeof(responseBuffer));
 
-    while (millis() - start < timeout) {
-        while (ModemSerial.available()) {
+    while (millis() - start < timeout)
+    {
+        while (ModemSerial.available())
+        {
             char c = ModemSerial.read();
-            if (index < sizeof(responseBuffer) - 1) {
+            if (index < sizeof(responseBuffer) - 1)
+            {
                 responseBuffer[index++] = c;
             }
         }
 
         // Check if we got the expected response
-        if (expected && strstr(responseBuffer, expected)) {
+        if (expected && strstr(responseBuffer, expected))
+        {
             break;
         }
 
         // Also check for ERROR
-        if (strstr(responseBuffer, "ERROR")) {
+        if (strstr(responseBuffer, "ERROR"))
+        {
             break;
         }
 
@@ -90,7 +120,8 @@ bool sendATCommand(const char* command, const char* expected, unsigned long time
     }
 
     // Print response
-    if (index > 0) {
+    if (index > 0)
+    {
         Serial.print(F("<< "));
         Serial.println(responseBuffer);
     }
@@ -98,16 +129,19 @@ bool sendATCommand(const char* command, const char* expected, unsigned long time
     return (expected && strstr(responseBuffer, expected));
 }
 
-void powerOnModem() {
+void powerOnModem()
+{
     Serial.println(F("Powering on modem..."));
 
-    // Enable power supply (if pin is configured)
-    #if MODEM_POWER != 255
+// Enable power supply (if pin is configured - needed for LILYGO)
+#if MODEM_POWER != 255
+    Serial.println(F("Enabling modem power (GPIO 25 HIGH)..."));
     digitalWrite(MODEM_POWER, HIGH);
-    delay(100);
-    #endif
+    delay(500);
+#endif
 
     // Pulse PWRKEY LOW to turn on (SIM7600 PWRKEY is active-low)
+    Serial.println(F("Pulsing PWRKEY..."));
     digitalWrite(MODEM_PWRKEY, LOW);
     delay(1000);
     digitalWrite(MODEM_PWRKEY, HIGH);
@@ -116,7 +150,8 @@ void powerOnModem() {
     delay(5000);
 }
 
-void resetModem() {
+void resetModem()
+{
     Serial.println(F("Resetting modem..."));
 
     digitalWrite(MODEM_RESET, LOW);
@@ -127,37 +162,43 @@ void resetModem() {
     delay(5000);
 }
 
-void powerCycleModem() {
+void powerCycleModem()
+{
     Serial.println(F("Power cycling modem..."));
 
     // Power off via PWRKEY (pulse LOW - same as power on, it's a toggle)
     digitalWrite(MODEM_PWRKEY, LOW);
-    delay(1500);  // Hold longer for power off
+    delay(1500); // Hold longer for power off
     digitalWrite(MODEM_PWRKEY, HIGH);
     delay(2000);
 
-    // Also cut power supply if pin is configured
-    #if MODEM_POWER != 255
+// Also cut power supply if pin is configured
+#if MODEM_POWER != 255
     digitalWrite(MODEM_POWER, LOW);
     delay(1000);
-    #endif
+#endif
 
     // Power on
     powerOnModem();
 }
 
-void testATCommunication() {
+void testATCommunication()
+{
     Serial.println(F("\n--- Testing AT Communication ---"));
 
-    if (sendATCommand("AT", "OK")) {
+    if (sendATCommand("AT", "OK"))
+    {
         Serial.println(F("SUCCESS: Modem is responding!"));
-    } else {
+    }
+    else
+    {
         Serial.println(F("FAILED: No response from modem"));
         Serial.println(F("Try: 'w' to power cycle, or check wiring"));
     }
 }
 
-void getModemInfo() {
+void getModemInfo()
+{
     Serial.println(F("\n--- Modem Information ---"));
 
     // Disable echo first
@@ -176,134 +217,194 @@ void getModemInfo() {
     sendATCommand("AT+CGMM", "OK");
 }
 
-void checkSIMStatus() {
+void checkSIMStatus()
+{
     Serial.println(F("\n--- SIM Card Status ---"));
 
-    if (sendATCommand("AT+CPIN?", "READY")) {
+    if (sendATCommand("AT+CPIN?", "READY"))
+    {
         Serial.println(F("SIM card is READY"));
-    } else if (strstr(responseBuffer, "SIM PIN")) {
+    }
+    else if (strstr(responseBuffer, "SIM PIN"))
+    {
         Serial.println(F("SIM requires PIN code"));
-    } else if (strstr(responseBuffer, "SIM PUK")) {
+    }
+    else if (strstr(responseBuffer, "SIM PUK"))
+    {
         Serial.println(F("SIM is PUK locked!"));
-    } else if (strstr(responseBuffer, "NOT INSERTED")) {
+    }
+    else if (strstr(responseBuffer, "NOT INSERTED"))
+    {
         Serial.println(F("No SIM card detected!"));
-    } else {
+    }
+    else
+    {
         Serial.println(F("Unknown SIM status"));
     }
 }
 
-void checkSignalStrength() {
+void checkSignalStrength()
+{
     Serial.println(F("\n--- Signal Strength ---"));
 
     sendATCommand("AT+CSQ", "+CSQ:");
 
     // Parse CSQ value
-    char* csqPtr = strstr(responseBuffer, "+CSQ:");
-    if (csqPtr) {
+    char *csqPtr = strstr(responseBuffer, "+CSQ:");
+    if (csqPtr)
+    {
         int rssi = atoi(csqPtr + 6);
 
         Serial.print(F("RSSI: "));
         Serial.print(rssi);
 
-        if (rssi == 99) {
+        if (rssi == 99)
+        {
             Serial.println(F(" (Unknown/No signal)"));
-        } else {
+        }
+        else
+        {
             // Convert to dBm: dBm = -113 + (rssi * 2)
             int dbm = -113 + (rssi * 2);
             Serial.print(F(" ("));
             Serial.print(dbm);
             Serial.print(F(" dBm) - "));
 
-            if (rssi < 10) {
+            if (rssi < 10)
+            {
                 Serial.println(F("Poor"));
-            } else if (rssi < 15) {
+            }
+            else if (rssi < 15)
+            {
                 Serial.println(F("Fair"));
-            } else if (rssi < 20) {
+            }
+            else if (rssi < 20)
+            {
                 Serial.println(F("Good"));
-            } else {
+            }
+            else
+            {
                 Serial.println(F("Excellent"));
             }
         }
-    } else {
+    }
+    else
+    {
         Serial.println(F("Failed to get signal strength"));
     }
 }
 
-void checkNetworkRegistration() {
+void checkNetworkRegistration()
+{
     Serial.println(F("\n--- Network Registration ---"));
 
     sendATCommand("AT+CREG?", "+CREG:");
 
-    char* cregPtr = strstr(responseBuffer, "+CREG:");
-    if (cregPtr) {
+    char *cregPtr = strstr(responseBuffer, "+CREG:");
+    if (cregPtr)
+    {
         // Format: +CREG: <n>,<stat>
-        char* statPtr = strchr(cregPtr + 7, ',');
-        if (statPtr) {
+        char *statPtr = strchr(cregPtr + 7, ',');
+        if (statPtr)
+        {
             int stat = atoi(statPtr + 1);
 
             Serial.print(F("Status: "));
-            switch (stat) {
-                case 0: Serial.println(F("Not registered, not searching")); break;
-                case 1: Serial.println(F("Registered, home network")); break;
-                case 2: Serial.println(F("Not registered, searching...")); break;
-                case 3: Serial.println(F("Registration denied")); break;
-                case 4: Serial.println(F("Unknown")); break;
-                case 5: Serial.println(F("Registered, roaming")); break;
-                default: Serial.println(F("Unknown status")); break;
+            switch (stat)
+            {
+            case 0:
+                Serial.println(F("Not registered, not searching"));
+                break;
+            case 1:
+                Serial.println(F("Registered, home network"));
+                break;
+            case 2:
+                Serial.println(F("Not registered, searching..."));
+                break;
+            case 3:
+                Serial.println(F("Registration denied"));
+                break;
+            case 4:
+                Serial.println(F("Unknown"));
+                break;
+            case 5:
+                Serial.println(F("Registered, roaming"));
+                break;
+            default:
+                Serial.println(F("Unknown status"));
+                break;
             }
-        } else {
+        }
+        else
+        {
             Serial.println(F("Failed to parse registration status"));
         }
-    } else {
+    }
+    else
+    {
         Serial.println(F("Failed to get registration status"));
     }
 }
 
-void getOperatorName() {
+void getOperatorName()
+{
     Serial.println(F("\n--- Operator ---"));
 
     sendATCommand("AT+COPS?", "+COPS:", 5000);
 
     // Parse operator name
-    char* opsPtr = strstr(responseBuffer, "\"");
-    if (opsPtr) {
-        char* endPtr = strchr(opsPtr + 1, '"');
-        if (endPtr) {
+    char *opsPtr = strstr(responseBuffer, "\"");
+    if (opsPtr)
+    {
+        char *endPtr = strchr(opsPtr + 1, '"');
+        if (endPtr)
+        {
             *endPtr = '\0';
             Serial.print(F("Operator: "));
             Serial.println(opsPtr + 1);
-            *endPtr = '"';  // Restore
-        } else {
+            *endPtr = '"'; // Restore
+        }
+        else
+        {
             Serial.println(F("Failed to parse operator name"));
         }
-    } else {
+    }
+    else
+    {
         Serial.println(F("No operator (not registered)"));
     }
 }
 
-void manualATMode() {
+void manualATMode()
+{
     Serial.println(F("\n--- Manual AT Command Mode ---"));
     Serial.println(F("Type AT commands directly. Type 'exit' to quit."));
     Serial.println();
 
     String inputBuffer = "";
 
-    while (true) {
+    while (true)
+    {
         // Check for modem responses
-        while (ModemSerial.available()) {
+        while (ModemSerial.available())
+        {
             char c = ModemSerial.read();
             Serial.write(c);
         }
 
         // Check for user input
-        while (Serial.available()) {
+        while (Serial.available())
+        {
             char c = Serial.read();
 
-            if (c == '\r' || c == '\n') {
-                if (inputBuffer.length() > 0) {
+            if (c == '\r' || c == '\n')
+            {
+                if (inputBuffer.length() > 0)
+                {
                     Serial.println();
 
-                    if (inputBuffer.equalsIgnoreCase("exit")) {
+                    if (inputBuffer.equalsIgnoreCase("exit"))
+                    {
                         Serial.println(F("Exiting manual mode"));
                         return;
                     }
@@ -311,14 +412,19 @@ void manualATMode() {
                     ModemSerial.println(inputBuffer);
                     inputBuffer = "";
                 }
-            } else if (c == 127 || c == 8) {  // Backspace
-                if (inputBuffer.length() > 0) {
+            }
+            else if (c == 127 || c == 8)
+            { // Backspace
+                if (inputBuffer.length() > 0)
+                {
                     inputBuffer.remove(inputBuffer.length() - 1);
                     Serial.write(8);
                     Serial.write(' ');
                     Serial.write(8);
                 }
-            } else {
+            }
+            else
+            {
                 inputBuffer += c;
                 Serial.write(c);
             }
@@ -332,7 +438,8 @@ void manualATMode() {
 // Setup and Loop
 // ============================================
 
-void setup() {
+void setup()
+{
     Serial.begin(115200);
     delay(1000);
 
@@ -340,38 +447,48 @@ void setup() {
     Serial.println(F("========================================="));
     Serial.println(F("   COW-Bois Cellular Modem Test"));
     Serial.println(F("   SIM7600 4G LTE Module"));
+#ifdef BOARD_LILYGO
+    Serial.println(F("   Board: LILYGO T-SIM7600E"));
+#else
+    Serial.println(F("   Board: Waveshare Breakout"));
+#endif
     Serial.println(F("========================================="));
     Serial.println();
 
     // Initialize modem control pins
     pinMode(MODEM_PWRKEY, OUTPUT);
     pinMode(MODEM_RESET, OUTPUT);
-    #if MODEM_POWER != 255
+#if MODEM_POWER != 255
     pinMode(MODEM_POWER, OUTPUT);
-    #endif
+#endif
 
-    digitalWrite(MODEM_PWRKEY, HIGH);  // PWRKEY idle state (active-low)
-    digitalWrite(MODEM_RESET, HIGH);   // Reset idle state (active-low)
-    #if MODEM_POWER != 255
+    digitalWrite(MODEM_PWRKEY, HIGH); // PWRKEY idle state (active-low)
+    digitalWrite(MODEM_RESET, HIGH);  // Reset idle state (active-low)
+#if MODEM_POWER != 255
     digitalWrite(MODEM_POWER, LOW);
-    #endif
+#endif
 
     // Initialize modem serial
     ModemSerial.begin(115200, SERIAL_8N1, MODEM_RX_PIN, MODEM_TX_PIN);
 
     Serial.println(F("Modem pins initialized"));
-    Serial.print(F("  TX: GPIO ")); Serial.println(MODEM_TX_PIN);
-    Serial.print(F("  RX: GPIO ")); Serial.println(MODEM_RX_PIN);
-    Serial.print(F("  PWRKEY: GPIO ")); Serial.println(MODEM_PWRKEY);
-    Serial.print(F("  RESET: GPIO ")); Serial.println(MODEM_RESET);
-    #if MODEM_POWER != 255
-    Serial.print(F("  POWER: GPIO ")); Serial.println(MODEM_POWER);
-    #else
+    Serial.print(F("  TX: GPIO "));
+    Serial.println(MODEM_TX_PIN);
+    Serial.print(F("  RX: GPIO "));
+    Serial.println(MODEM_RX_PIN);
+    Serial.print(F("  PWRKEY: GPIO "));
+    Serial.println(MODEM_PWRKEY);
+    Serial.print(F("  RESET: GPIO "));
+    Serial.println(MODEM_RESET);
+#if MODEM_POWER != 255
+    Serial.print(F("  POWER: GPIO "));
+    Serial.println(MODEM_POWER);
+#else
     Serial.println(F("  POWER: Not configured"));
-    #endif
+#endif
     Serial.println();
 
-    // Power on the modem
+    // Power on the modem via PWRKEY pulse
     powerOnModem();
 
     // Test communication
@@ -380,72 +497,76 @@ void setup() {
     printHelp();
 }
 
-void loop() {
-    if (Serial.available()) {
+void loop()
+{
+    if (Serial.available())
+    {
         char cmd = Serial.read();
 
         // Consume any extra characters (newline, etc)
-        while (Serial.available()) {
+        while (Serial.available())
+        {
             Serial.read();
         }
 
-        switch (cmd) {
-            case 'a':
-            case 'A':
-                testATCommunication();
-                break;
+        switch (cmd)
+        {
+        case 'a':
+        case 'A':
+            testATCommunication();
+            break;
 
-            case 'i':
-            case 'I':
-                getModemInfo();
-                break;
+        case 'i':
+        case 'I':
+            getModemInfo();
+            break;
 
-            case 'p':
-            case 'P':
-                checkSIMStatus();
-                break;
+        case 'p':
+        case 'P':
+            checkSIMStatus();
+            break;
 
-            case 's':
-            case 'S':
-                checkSignalStrength();
-                break;
+        case 's':
+        case 'S':
+            checkSignalStrength();
+            break;
 
-            case 'n':
-            case 'N':
-                checkNetworkRegistration();
-                break;
+        case 'n':
+        case 'N':
+            checkNetworkRegistration();
+            break;
 
-            case 'o':
-            case 'O':
-                getOperatorName();
-                break;
+        case 'o':
+        case 'O':
+            getOperatorName();
+            break;
 
-            case 'r':
-            case 'R':
-                resetModem();
-                testATCommunication();
-                break;
+        case 'r':
+        case 'R':
+            resetModem();
+            testATCommunication();
+            break;
 
-            case 'w':
-            case 'W':
-                powerCycleModem();
-                testATCommunication();
-                break;
+        case 'w':
+        case 'W':
+            powerCycleModem();
+            testATCommunication();
+            break;
 
-            case 'm':
-            case 'M':
-                manualATMode();
-                printHelp();
-                break;
+        case 'm':
+        case 'M':
+            manualATMode();
+            printHelp();
+            break;
 
-            case 'h':
-            case 'H':
-            case '?':
-                printHelp();
-                break;
+        case 'h':
+        case 'H':
+        case '?':
+            printHelp();
+            break;
 
-            default:
-                break;
+        default:
+            break;
         }
     }
 }
