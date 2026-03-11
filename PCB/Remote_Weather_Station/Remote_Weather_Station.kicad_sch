@@ -4820,16 +4820,6 @@
 	)
 	(wire
 		(pts
-			(xy 80.01 96.52) (xy 82.55 96.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1c2f3e39-c1a6-4709-be38-b1ebf5c85585")
-	)
-	(wire
-		(pts
 			(xy 273.05 83.82) (xy 270.51 83.82)
 		)
 		(stroke
@@ -5130,6 +5120,16 @@
 	)
 	(wire
 		(pts
+			(xy 80.01 96.52) (xy 82.55 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3fd8082d-3f7f-4b95-91a2-2d62d2eaad55")
+	)
+	(wire
+		(pts
 			(xy 92.71 163.83) (xy 95.25 163.83)
 		)
 		(stroke
@@ -5417,6 +5417,16 @@
 			(type default)
 		)
 		(uuid "66afd841-57ce-4f4d-b5c9-232869d0d398")
+	)
+	(wire
+		(pts
+			(xy 80.01 99.06) (xy 82.55 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6824d8cc-832f-4518-87b3-85ee0cfe7f24")
 	)
 	(wire
 		(pts
@@ -5957,16 +5967,6 @@
 			(type default)
 		)
 		(uuid "aa819a3f-abe0-4c3f-ab17-0a2a8feab41e")
-	)
-	(wire
-		(pts
-			(xy 80.01 99.06) (xy 82.55 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "aaa6d7ac-72b7-4974-b7d8-c02853f12294")
 	)
 	(wire
 		(pts
@@ -7050,7 +7050,7 @@
 	)
 	(global_label "modem_rx"
 		(shape input)
-		(at 82.55 96.52 0)
+		(at 82.55 99.06 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7060,7 +7060,7 @@
 		)
 		(uuid "034b1bae-d330-41ad-9c2e-00b6bb3dde54")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 95.0903 96.52 0)
+			(at 95.0903 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7215,28 +7215,6 @@
 		(uuid "3074e92e-1e42-4b56-808c-b172a437d1b9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 156.2923 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "Flash"
-		(shape bidirectional)
-		(at 82.55 50.8 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "37c4bee2-217d-4be8-a5f3-1baef1a34100")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 91.7264 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7444,6 +7422,28 @@
 			)
 		)
 	)
+	(global_label "Reset"
+		(shape bidirectional)
+		(at 82.55 50.8 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a0514d8c-629e-4054-8722-7e82450ca9a7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 91.8475 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "White_Wire"
 		(shape input)
 		(at 31.75 163.83 180)
@@ -7468,7 +7468,7 @@
 	)
 	(global_label "modem_tx"
 		(shape input)
-		(at 82.55 99.06 0)
+		(at 82.55 96.52 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7478,7 +7478,7 @@
 		)
 		(uuid "aa13ae7f-2958-47ec-8974-68b530def7be")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 95.0298 99.06 0)
+			(at 95.0298 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16783,15 +16783,15 @@
 	(symbol
 		(lib_id "Device:C_Small")
 		(at 176.53 69.85 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "f5fb687c-c97c-4e43-9744-701b41d1a4fc")
 		(property "Reference" "C109"
-			(at 179.07 68.5862 0)
+			(at 173.99 68.5862 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16800,7 +16800,7 @@
 			)
 		)
 		(property "Value" "1u"
-			(at 179.07 71.1262 0)
+			(at 173.99 71.1262 0)
 			(effects
 				(font
 					(size 1.27 1.27)
